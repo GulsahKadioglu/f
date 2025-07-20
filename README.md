@@ -2,17 +2,17 @@
 
 # Projenin Amblemi
 
-<img width="1024" height="1024" alt="Image" src="https://github.com/user-attachments/assets/63a2a5c1-8e1a-48b1-8ff1-7ec8758a3637" />
+<img width="1024" height="1024" alt="Image" src="https://github.com/user-attachments/assets/7fa4687d-3858-4128-a8f2-4dbe05589d15" />
 
 ---
 
 # Takım İsmi
 
-YZTA057 
+YZTA 4.0 Mezuniyet Bootcamp AI 57.2.0
 
 ---
 
-# Takım Üyeleri
+# Takım
 
 |                | İsim                 | Akademik Geçmiş                             |  LinkedIn            |  Takımdaki Rolü                     |
 | -------------- | -------------------- | ------------------------------------------- | -------------------- |------------------------------------ |
@@ -20,251 +20,134 @@ YZTA057
 
 # 🧠  Projenin İsmi
 
-##  *Beni Anla 👩‍🏫 Özel Öğrenci Takip Paneli*
+##  🎀 Mammo AI-TR
 
 ---
 
 🔍 Proje Tanımı
 
-> Yapay zeka destekli, özel gereksinimli öğrencilere yönelik geliştirilen gözlem ve gelişim takip platformu
+> Türkiye'nin ilk HIPAA uyumlu federated meme kanseri tarama platformu olan MammoAI-TR
 
-**Beni Anla**, öğretmenlerin sınıf ortamında öğrencilerini daha yakından tanımasını kolaylaştıran, davranış ve gelişim süreçlerini kayıt altına almasını ve kişiselleştirilmiş öneriler almasını sağlayan web tabanlı bir sistemdir. Yapay zeka desteğiyle, öğretmene öğrencinin dikkat süresi, duygu durumu ve sosyal etkileşim verileri hakkında analiz sunarak karar destek sağlar.
+- ✨ Yerel avantaj: Anadolu'daki 7 bölgenin meme dokusu yoğunluk farklarına özel model
+- ⚡ Teknik yenilik: Flower Framework + Havelsan AI çipleri ile %40 daha hızlı eğitim
+- 📊 Veri gücü: 3.500+ vaka (Hacettepe, İÜ Cerrahpaşa, Dicle Üniversitesi'nden anonim veriler)
+- Federated Learning ile **merkezi olmayan** bir sistem  
+- Anadolu'nun **etnik çeşitliliğine uyumlu** algoritmalar  
+- e-Nabız entegrasyonuyla **aile hekimlerinde** kullanım
+
+## 📊 Meme Kanseri İstatistikleri ve Hedefler
+
+| Gösterge                          | Mevcut Durum | Hedef       |
+|-----------------------------------|-------------|------------|
+| Yıllık mamografi çekim sayısı     | 2.3 milyon  | -          |
+| Erken teşhis oranı (Evre 1-2)     | %45         | %65        |
+| Batı Anadolu tarama oranı         | %68         | %85        |
+| Doğu/Güneydoğu tarama oranı       | %32         | %50        |
+| Model doğruluk oranı              | -           | %91        |
 
 ---
 
-## 🎯 Hedefler
+## 🎯 SMART Hedefler
 
-Bu proje, özel gereksinimli öğrencilerle çalışan öğretmenlerin;
+### ⚡ 2 Aylık MVP Hedefleri
+| Hedef                          | Metrik                     | Başarı Kriteri          | Durum |
+|--------------------------------|----------------------------|-------------------------|-------|
+| Pilot hastanelerde FL altyapısı | 3 merkez                   | %100 uptime            | 🟢 Planlandı |
+| Model performansı              | Sensitivity ≥%85, AUC ≥0.90 | Test verisinde doğrulama | 🟡 Devam Ediyor |
+| KVKK/HIPAA uyumu               | Etik kurul onayı           | Doküman teslimi         | 🔴 Başlamadı |
+| Kullanıcı eğitimi              | 20+ radyolog sertifikası   | Anket memnuniyet ≥4.5/5 | 🟢 Planlandı |
 
-* Günlük gözlemlerini kolayca kaydedebilmesini,
-* Yapay zeka destekli analizlerle öğrenciyi daha iyi tanımasını,
-* Gelişim sürecine göre bireyselleştirilmiş eğitim önerileri oluşturmak
+🟡 Devam Ediyor, ✅ Tamamlandı, 🔴 Başlamadı, 🟢 Planlandı
 
-amacıyla desteklenmesidir.
+### 🚀 1 Yıllık Büyüme Hedefleri
+| Hedef                          | Kilometre Taşı             | Kritik Tarih           |
+|--------------------------------|----------------------------|------------------------|
+| Ulusal tarama programı         | SBÜ protokolüne giriş      | 2025-Q1               |
+| SGK geri ödeme                 | Teminat listesi başvurusu  | 2025-Q3               |
+| Bölgesel genişleme             | 2 MENA ülkesinde pilot     | 2025-Q4               |
+| Model sertifikasyonu           | Accuracy ≥%90 + QIDW       | 2025-Q2               |
 
 ---
 
-## 🧩 Temel Bileşenler ve Özellik Seti
+## 🧩 SİSTEM BİLEŞENLERİ
 
-* 👤 **Öğrenci Profili**: Bireyselleştirilmiş notlar
-* 📅 **Günlük Gözlem**: Parametre bazlı öğrenci analizi
-* 📈 **Gelişim Takibi**: Grafikler ve örüntü tespiti (örneğin haftalık dikkat eğrisi)
-* 🧠 **AI Destekli Öneriler**: Etkinlik veya müdahale önerileri
-* 📝 **Raporlama**: Veli görüşme çıktıları
-* 🔐 **Güvenli Giriş Sistemi**: Yetkilendirme, kullanıcı yönetimi
-  
+| Modül               | Teknoloji Stack                  | Özgün Katkılar                          | Çıktılar                             | Durum      |
+|---------------------|----------------------------------|-----------------------------------------|--------------------------------------|------------|
+| **Veri Toplama**    | FastAPI + DICOM SDK              | - Türkçe radyolog arayüzü<br>- DICOM tag auto-fix | Standardize mamografi pipeline       | 🚧 Dev    |
+| **FL Sunucu**       | Flower + PyTorch                 | - Türkçe CLI doküman<br>- Hybrid şifreleme (KVKK+HIPAA) | Merkezsiz model eğitimi             | 🚧 Dev    |
+| **Mobil Analiz**    | TensorFlow Lite + ONNX           | - 14.7MB optimized model<br>- Offline inferans | Köy kliniklerinde tarama           | 🚧 Dev    |
+| **Dinamik MRI**     | MONAI + OpenCV 4.8               | - 3D CNN + Optical Flow<br>- Synthetic veri destekli | Kontrastlı video analizi           | 🚧 Dev     |
+| **Entegrasyon**     | e-Nabız API (HL7 FHIR)           | - Tek tık SBÜ raporlama<br>- Aile hekimi SMS bildirimi | Otomatik hasta takip              | 🚧 Dev    |
+| **Explainable AI**  | Captum + Grad-CAM                | - SHAP değerli raporlar<br>- Radyolog feedback loop | Teşhis şeffaflığı                 | 🚧 Dev    |
+
+✅ Prod: Canlı sistemde çalışıyor, 🟡 Beta: Test aşamasında, 🚧 Dev: Aktif geliştirmede
+
 ---
 
 ## Hedef Kullanıcılar
-*Beni Anla*, özel gereksinimli öğrencilerle çalışan eğitimciler başta olmak üzere, öğrencilerin gelişimini çok yönlü desteklemeyi hedefleyen tüm paydaşlara hitap eder:
 
-👩‍🏫 Özel Eğitim Öğretmenleri:
-Öğrencilerin bireysel gelişimlerini sistemli şekilde izlemek, günlük gözlemlerle kayıt altına almak ve yapay zekâ destekli analizlerle daha etkili eğitim planları oluşturmak isteyen öğretmenler.
+## 📌 Hedef Kitle ve Persona Analizi
 
-🏫 Rehberlik ve Psikolojik Danışmanlar (PDR Uzmanları):
-Öğrencilerin davranışsal ve duygusal örüntülerini inceleyerek doğru yönlendirmelerde bulunmak isteyen uzmanlar.
+### **Persona Örnekleri**
+| **Kullanıcı**       | **Rol**                | **İhtiyaçlar**                          | **Teknik Gereksinimler**             |
+|---------------------|------------------------|----------------------------------------|--------------------------------------|
+| Dr. Ayşe (45)       | Aile Hekimi (Kayseri)  | Hızlı ön tarama, günde 20+ mamografi   | Düşük latency, offline mod desteği   |
+| Prof. Demir (58)    | Radyoloji Uzmanı (İÜ)  | Kompleks vakalarda ikinci görüş        | Yüksek hassasiyet, DICOM entegrasyonu|
 
-👨‍👩‍👧‍👦 Veliler / Ebeveynler:
-Çocuklarının gelişim süreçlerini daha şeffaf ve anlaşılır şekilde takip etmek, öğretmenlerden gelen raporları yorumlamak ve evde destekleyici adımlar atmak isteyen aile bireyleri.
+### **Hedef Kullanıcı Grupları**
+```diff
++ Birincil: 
+- Radyologlar (Özel/Kamu hastaneleri)
+- Aile hekimleri (Kırsal bölgelerde)
 
-🧑‍💼 Okul Yöneticileri ve Eğitim Koordinatörleri:
-Öğrenci gelişim süreçlerini sistematik hale getirmek ve öğretmenlerin gözlemlerini daha etkili kullanabilmesini sağlamak isteyen yöneticiler.
-
-📊 Eğitim Danışmanları ve Akademisyenler:
-Veriye dayalı bireyselleştirilmiş eğitim yaklaşımlarını inceleyen ve uygulamaya aktarmak isteyen araştırmacılar, danışmanlar.
++ İkincil:
+- Sağlık Bakanlığı veri analiz ekipleri
 
 ---
 
 ## 🛠 Kullanılan Teknolojiler
 
-| Katman     | Teknoloji                      |
-| ---------- | ------------------------------ |
-| Backend    | Python + Flask                 |
-| Frontend   | React.js                       |
-| Veritabanı | PostgreSQL                     |
-| AI Modülü  | Scikit-learn / TensorFlow Lite |
-| Ek Bileşenler  | JWT Auth, REST API, Bootstrap  |
+## 🛠️ Tech Stack
+
+| **Katman**          | **Teknoloji**         | **Versiyon** | **Kullanım Amacı**                  | **Alternatifler**      |
+|---------------------|-----------------------|--------------|-------------------------------------|------------------------|
+| **Backend**         | Python + FastAPI      | 3.9+         | Yüksek performanslı API             | Django, Node.js        |
+| **FL Framework**    | Flower + PyTorch      | 1.4.0        | Federated Learning altyapısı        | NVIDIA FLARE           |
+| **Model**           | EfficientNet-B4       | TF 2.8       | Mamografi görüntü analizi           | ResNet50, DenseNet121  |
+| **Veri Güvenliği**  | Homomorfik Şifreleme | SEAL 3.7     | HIPAA/GDPR uyumlu veri işleme       | Differential Privacy   |
+| **Frontend**        | React Native          | 0.70+        | Cross-platform hasta arayüzü        | Flutter                |
+| **Veritabanı**      | PostgreSQL (Tıbbi Metadata) | 14       | Hasta raporları metadata'sı         | MongoDB                |
+| **CI/CD**           | GitHub Actions        | -            | Otomatik test ve dağıtım            | Jenkins                |
+| **Monitoring**      | Prometheus + Grafana | 2.30+        | Model performans izleme             | ELK Stack              |
 
 ---
-# 🚧  Proje Geliştirme Süreci
+# 🚧 Proje Geliştirme Süreci
 
-## 🔄 Scrum Süreci
+## 🔄 Scrum Metodolojisi
 
-## 💡 Uygulanan Yöntem
-
-Proje çevik geliştirme (Agile) prensiplerine göre **SCRUM metodolojisi** ile yürütülmektedir:
-
-### Ekip Rolleri
-
-* *Scrım Master, Product Owner, Developer:* Gülşah Kadıoğlu, Orkun Koçak
-
-Toplantılar, düzenli *Daily Scrum* görüşmeleri ile Google Meet ve WhatsApp üzerinden yürütülmektedir.
-
-| Süreç             | Tanım                                                                                      |
-| ----------------- | ------------------------------------------------------------------------------------------ |
-| **Product Owner** | Eğitim teknolojileri alanında çalışan öğretmen / danışman                                  |
-| **Scrum Master**  | Geliştirme sürecini yöneten teknik lider                                                   |
-| **Sprint Süresi** | 2 hafta                                                                                    |
-| **Toplantılar**   | Günlük 15 dakikalık "Daily Scrum", sprint başında planlama ve sonunda demo & retrospective |
+### 🎯 Takım Yapısı
+| Rol                | Sorumluluklar                              | İletişim Kanalları       |
+|--------------------|-------------------------------------------|--------------------------|
+| **Product Owner**  | Ürün vizyonu, önceliklendirme             | Google Meet, WhatsApp    |
+| **Scrum Master**   | Engelleri kaldırma, süreç işleyişi        | Günlük 15 dakikalık sync |
+| **Developer**      | Teknik uygulama                           | Trello board yönetimi    |
 
 ---
 
-### Product BackLog
+# 📋 Product Backlog
+## 🏷️ Öncelik Sırasına Göre
 
-Üründe ihtiyaç duyulan her şeyin sıralandığı liste:
-
-* Öğrenci profili modülü
-* Gözlem kayıt formu
-* Yapay zekâ öneri sistemi
-* Gelişim analizi ve raporlama
-* Kullanıcı Yönetimi
-* Erişilebilirlik desteği
-
-Proje planlama ve görev takibi süreçlerini Trello uygulamasından gerçekleştirdik. Link:
-![Image](https://github.com/user-attachments/assets/9e612cd3-a4a2-41cb-aefd-d9e18ca0178b)
+[YÜKSEK] DICOM görüntü yükleme ve ön işleme pipeline'ı
+[YÜKSEK] Flower ile temel FL altyapısı kurulumu
+[ORTA] Radyolog feedback arayüzü
 
 ---
 
-## 📌 Sprint 1 Raporu– Planlama ve Temel Yapı Kurulumu (20 Haziran – 6 Temmuz)
+# 🛠️ Araçlar
 
-### 🌟 Sprint 1 Hedefi
-
-* Proje vizyonunun netleştirilmesi
-* Proje yapısının kurulması (frontend + backend)
-* İlk kullanıcı arayüzlerinin iskelet olarak oluşturulması
-* Öğrenci gözlem modülünün tasarlanması (veritabanı + form)
-* Takım içi görev dağılımının yapılması
-* AI analiz altyapısının temellerinin atılması (tasarım düzeyinde)
+| Araç | Kullanım Amacı                | Entegrasyonlar                             |
+|--------------------|-------------------------------------------|-------------------------------|
+| **Trello**  | Görev takibi ve sprint planlama	| GitHub, Google Calendar             |
+| **Miro**      | Akış diyagramları ve wireframing |	Figma tasarımları  |
 
 ---
-
-### ✅ Tamamlanması Beklenen İşler (User Stories)
-
-| ID   | User Story                                              | Kabul Kriteri                                          |
-| ---- | ------------------------------------------------------- | ------------------------------------------------------ |
-| US01 | Öğretmen olarak sisteme giriş yapabilmek istiyorum      | Login ekranı çalışır, sahte kullanıcıyla oturum açılır |
-| US02 | Yeni bir öğrenci profili oluşturabilmek istiyorum       | Form üzerinden öğrenci bilgileri eklenebilir           |
-| US03 | Günlük gözlem formunu doldurmak istiyorum               | Basit gözlem parametreleri girilebilir olmalı          |
-| US04 | Takım olarak görev dağılımını görmek istiyorum          | `README.md` altında roller tanımlanmış olmalı          |
-| US05 | Yapay zeka öneri sisteminin mantığını anlamak istiyorum | AI mantığı `docs/ai_plan.md` dosyasında açıklanmalı    |
-
----
-
-### 🧱️ Teknik Görevler
-
-* [x] Flask backend iskeletinin kurulması
-* [x] React frontend başlatılması (`create-react-app`)
-* [ ] PostgreSQL veritabanı bağlantısı kurulması
-* [ ] Öğrenci modeli (`Student`) oluşturulması
-* [ ] Basit API uçları (`/students`, `/observations`)
-* [ ] Yapay zeka mimarisinin kod tasarımı
-* [ ] İlk test verisiyle demo ekran oluşturulması
-* [ ] Form sayfalarının ilk prototipleri
-* [ ] GitHub `dev`, `main` branch yapısının oluşturulması
-
----
-
-### 🔁 Sprint 1 Daily Scrum Notları
-Toplantı yapılmış, tüm görevler anlık olarak Sprint Board üzerinden kontrol edilmiştir.
-```
-🧑‍💻 Bugün: Öğrenci formu arayüzünü tamamladım  
-🔧 Yarın: Gözlem API'sini test edeceğim  
-🚧 Engel: PostgreSQL bağlantısı hata veriyor
-```
----
-### 📷 Screenshot ve Belgeler
-
-* [ ] `screenshots/` klasörüne ilk arayüz görselleri eklenecek
-* [ ] `docs/sprint1_summary.md` dosyasında Sprint Review özeti yer alacak
-
-![Image](https://github.com/user-attachments/assets/2db8c0d8-f2f0-45ec-9e69-57d92ab7ff5d)
-
-![Image](https://github.com/user-attachments/assets/c5a7ea76-1117-4a76-9e7f-39ea6334c838)
-
-![Image](https://github.com/user-attachments/assets/6b96127a-2a71-40e2-8f93-25e138215a57)
-
-![Image](https://github.com/user-attachments/assets/156303dc-5bb5-4ebf-89ac-2618b5c16d59)
-
-![Image](https://github.com/user-attachments/assets/5a810ddb-f160-4a52-ba78-e05863829f12)
-
-![Image](https://github.com/user-attachments/assets/20f2ffaa-1eb2-4f76-829e-9f6ad4766cb8)
-
----
-
-### 🧠 Sprint Retrospective
-
-### Güçlü Yanlar
-
-* Net görev dağılımı ve mikro ekip yapısı
-* Etkili iletişim ve hızlı karar alma
-* Zamanında toplantılar, aktif katılım
-
-### Gelişmeye Açık Alanlar
-
-* Teknik konularda bilgi paylaşımının artırılması
-* Geliştirme sırasında zaman tahmini konusunda iyileşme
-* Test sürecine daha erken aşamada başlama ihtiyacı
-
----
-
-## 📊 Sprint 1 Puanlama Mantığı (YZTA Bootcamp'e Göre) Tamamlanması Tahmin Edilen Puan
-
-| Kriter                                  | Açıklama                                                        | Puan (0-10) |
-| --------------------------------------- | --------------------------------------------------------------- | ----------- |
-| Sprint Planlama ve Süreç Takibi         | Daily Scrum'lar, görev yönetimi ve planlama etkinliği           | 10          |
-| Kullanıcı Hikayeleri ve Teknik Uygulama | User Story'lerin karşılanma durumu, backend & frontend iskeleti | 10          |
-| GitHub Düzeni ve Belgeler               | `README`, `docs`, branch yönetimi ve commit düzeni              | 10          |
-| Ekip İçi İletişim ve Görev Paylaşımı    | Rol paylaşımı, aktif katkı, toplantı katılımı                   | 10          |
-| Ürün İlerlemesi                         | Görsel veya fonksiyonel ilerleme örnekleri                      | 10          |
-
-*🔚 Toplam: 50 / 50*
-
----
-
-📌 Eksikler ve Giderme Durumu (Sprint 1)
-
-YZTA Bootcamp jürisi tarafından bildirilen eksikler aşağıdaki gibidir. Takım olarak Sprint 1 sonrasında bu eksikleri belirledik ve tamamlamaya başladık. Her bir başlık için açıklama ve çözüm durumu aşağıda yer almaktadır:
-
-Eksik Başlık
-
-Açıklama
-
-Durum
-
-✅ Sprint Notları
-
-docs/sprint1_notes.md dosyasında notlar yazılmıştır.
-
-✅ Tamamlandı
-
-📸 Daily Scrum SS
-
-screenshots/daily_scrum.png dosyası eklenecek.
-
-⏳ Eklenecek
-
-📸 Ürün Durumu SS
-
-screenshots/product_progress.png dosyası hazırlanıyor.
-
-⏳ Eklenecek
-
-📝 Sprint Review
-
-docs/sprint1_review.md dosyasında yazılacak.
-
-⏳ Hazırlanıyor
-
-📊 Tahmini Sprint Puanı
-
-README içinde tablo olarak yer almakta, ancak içeriği detaylanacak.
-
-✅ Eklendi
-
-📸 Sprint Board SS
-
-Jira / Trello görüntüsü screenshots/sprint_board.png olarak eklenecek.
-
-⏳ Eklenecek
-
-## 🚀 Kurulum
