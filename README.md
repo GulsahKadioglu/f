@@ -93,18 +93,15 @@ YZTA 4.0 Mezuniyet Bootcamp AI 57.2.0
 
 ### **Hedef Kullanıcı Grupları**
 
-+ Birincil: 
-- Radyologlar (Özel/Kamu hastaneleri)
-- Aile hekimleri (Kırsal bölgelerde)
+- Birincil: Radyologlar (Özel/Kamu hastaneleri), Aile hekimleri (Kırsal bölgelerde)
 
-+ İkincil:
-- Sağlık Bakanlığı veri analiz ekipleri
+- İkincil: Sağlık Bakanlığı veri analiz ekipleri
 
 ---
 
 ## 🛠 Kullanılan Teknolojiler
 
-## 🛠️ Tech Stack
+## Tech Stack
 
 | **Katman**          | **Teknoloji**         | **Versiyon** | **Kullanım Amacı**                  | **Alternatifler**      |
 |---------------------|-----------------------|--------------|-------------------------------------|------------------------|
@@ -120,7 +117,7 @@ YZTA 4.0 Mezuniyet Bootcamp AI 57.2.0
 ---
 # 🚧 Proje Geliştirme Süreci
 
-![MammoAI-TR Proje Takvimi]
+![MammoAI-TR Proje Takvimi](https://github.com/user-attachments/assets/799e6992-3774-4a0c-a75b-0839d3110905)
 
 
 ## 🔄 Scrum Metodolojisi
@@ -136,10 +133,6 @@ YZTA 4.0 Mezuniyet Bootcamp AI 57.2.0
 
 # 📋 Product Backlog
 ## 🏷️ Öncelik Sırasına Göre
-
-[YÜKSEK] DICOM görüntü yükleme ve ön işleme pipeline'ı
-[YÜKSEK] Flower ile temel FL altyapısı kurulumu
-[ORTA] Radyolog feedback arayüzü
 
 ---
 
