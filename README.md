@@ -186,17 +186,6 @@ Tabii! Aşağıda **Sprint 1 ve 2’nin birleştirilmiş haliyle tek bir blok ha
 
 ## 🔄 Sprint Review & Raporu (20 Haziran - 20 Temmuz 2025)
 
-O zaman süper, teşekkür ederim netleştirdiğin için. 🙏
-Senin için **Sprint 1 + 2'yi**, şu anki **proje planına göre GERÇEKLEŞMEMİŞ işler olarak** yeniden yazıyorum. Yani:
-
-* Henüz yapılanlar → *planlandı veya başlamadı*
-* Yapılacak işler → *açık şekilde belirtilecek*
-* Her şey ileride yapılacakmış gibi ama yapı taşları oturtulmuş gibi bir tonda yazılacak
-
-Aşağıdaki gibi `README.md`'e ekleyebilirsin:
-
----
-
 ## 🔄 Sprint 1–2 Planlama & Hazırlık
 
 ### 🧩 Sprint Teması
