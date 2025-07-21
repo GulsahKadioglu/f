@@ -28,12 +28,9 @@ YZTA 4.0 Mezuniyet Bootcamp AI 57.2.0
 
 > Türkiye'nin ilk HIPAA uyumlu federated meme kanseri tarama platformu olan MammoAI-TR
 
-- ✨ Yerel avantaj: Anadolu'daki 7 bölgenin meme dokusu yoğunluk farklarına özel model
-- ⚡ Teknik yenilik: Flower Framework + Havelsan AI çipleri ile %40 daha hızlı eğitim
-- 📊 Veri gücü: 3.500+ vaka (Hacettepe, İÜ Cerrahpaşa, Dicle Üniversitesi'nden anonim veriler)
-- Federated Learning ile **merkezi olmayan** bir sistem  
-- Anadolu'nun **etnik çeşitliliğine uyumlu** algoritmalar  
-- e-Nabız entegrasyonuyla **aile hekimlerinde** kullanım
+- ✨ Anadolu doku yoğunluğu değişimleri için bölgeye özgü modeller
+- ⚡ Flower Framework + Havelsan AI çipleri ile %40 daha hızlı eğitim
+- 📊 Türkiye'nin önde gelen hastanelerinden 3.500'den fazla anonim vaka
 
 ## 📊 Meme Kanseri İstatistikleri ve Hedefler
 
@@ -95,7 +92,7 @@ YZTA 4.0 Mezuniyet Bootcamp AI 57.2.0
 | Prof. Demir (58)    | Radyoloji Uzmanı (İÜ)  | Kompleks vakalarda ikinci görüş        | Yüksek hassasiyet, DICOM entegrasyonu|
 
 ### **Hedef Kullanıcı Grupları**
-```diff
+
 + Birincil: 
 - Radyologlar (Özel/Kamu hastaneleri)
 - Aile hekimleri (Kırsal bölgelerde)
@@ -122,6 +119,9 @@ YZTA 4.0 Mezuniyet Bootcamp AI 57.2.0
 
 ---
 # 🚧 Proje Geliştirme Süreci
+
+![MammoAI-TR Proje Takvimi]
+
 
 ## 🔄 Scrum Metodolojisi
 
