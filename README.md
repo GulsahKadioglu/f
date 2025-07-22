@@ -142,10 +142,6 @@ YZTA 4.0 Mezuniyet Bootcamp AI 57.2.0
 
 ---
 
-
-
----
-
 ## 📅 Daily Scrum Kayıtları (20 Haziran 2025 - 20 Temmuz 2025)
 
 | Tarih       | Yapılanlar                                                                 | Engeller                          | Sonraki Adımlar                                | İlgili Sprint Hedefi                  |
