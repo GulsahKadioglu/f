@@ -142,7 +142,7 @@ YZTA 4.0 Mezuniyet Bootcamp AI 57.2.0
 
 ---
 
-Tabii! Aşağıda **Sprint 1 ve 2’nin birleştirilmiş haliyle tek bir blok halinde** hazırlanmış GitHub `README.md` formatında yazılmış bir **Sprint Review & Raporu** bölümü bulacaksın. Doğrudan kopyalayıp `README.md` dosyana yapıştırabilirsin:
+
 
 ---
 
