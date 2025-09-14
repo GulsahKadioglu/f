@@ -1,0 +1,7 @@
+flwr
+tenseal
+numpy
+torch
+scipy
+sqlalchemy
+psycopg2-binary

@@ -1,0 +1,23 @@
+# .gitignore
+#
+# This file specifies intentionally untracked files that Git should ignore
+# when managing the `mobile-app` repository. Ignoring certain files helps
+# keep the repository clean, prevents sensitive information from being committed,
+# and avoids including large, generated, or temporary files that are not
+# essential for version control.
+#
+# Purpose:
+# - To prevent sensitive data (like API keys, credentials) from being committed.
+# - To exclude build artifacts, temporary files, and local development configurations.
+# - To ensure that only relevant source code and configuration files are tracked by Git.
+#
+# Each line in this file represents a pattern for files or directories to ignore.
+#
+# Ignored Patterns:
+# - `.env`: Environment variable files, which often contain sensitive API keys
+#           or local configuration that should not be shared or committed.
+.env
+# - `node_modules/`: The directory where npm (Node Package Manager) installs
+#                    all project dependencies. These files are typically very large
+#                    and can be regenerated from `package.json` and `package-lock.json`.
+node_modules/

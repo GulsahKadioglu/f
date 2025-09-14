@@ -1,0 +1,43 @@
+# This is a GitHub Actions workflow file that defines the Playwright test pipeline.
+# It automates the process of running end-to-end tests for the frontend application.
+
+name: Playwright Tests
+
+# This section defines the triggers for the workflow.
+# The workflow will run on any push or pull request to the `main` or `master` branches.
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+    branches: [main, master]
+
+# This section defines the jobs that will be run as part of the workflow.
+jobs:
+  test:
+    # This sets a timeout for the job to prevent it from running indefinitely.
+    timeout-minutes: 60
+    runs-on: ubuntu-latest
+    steps:
+      # This step checks out the repository code.
+      - uses: actions/checkout@v4
+      # This step sets up Node.js.
+      - uses: actions/setup-node@v4
+        with:
+          node-version: lts/*
+      # This step installs the npm dependencies.
+      - name: Install dependencies
+        run: npm ci
+      # This step installs the Playwright browsers.
+      - name: Install Playwright Browsers
+        run: npx playwright install --with-deps
+      # This step runs the Playwright tests.
+      - name: Run Playwright tests
+        run: npx playwright test
+      # This step uploads the Playwright report as an artifact.
+      - uses: actions/upload-artifact@v4
+        # This condition ensures that the report is uploaded even if the tests fail.
+        if: ${{ !cancelled() }}
+        with:
+          name: playwright-report
+          path: playwright-report/
+          retention-days: 30

@@ -1,0 +1,7 @@
+# This file specifies intentionally untracked files that Git should ignore within the backend directory.
+# It helps to keep the repository clean by excluding files that are generated or contain sensitive information.
+
+# Ignore local environment variable files.
+# `.env` files often contain sensitive information like database credentials or API keys
+# and should not be committed to version control.
+.env

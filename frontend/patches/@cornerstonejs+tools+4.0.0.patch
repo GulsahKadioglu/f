@@ -1,0 +1,20 @@
+diff --git a/node_modules/@cornerstonejs/tools/package.json b/node_modules/@cornerstonejs/tools/package.json
+index ab59d3d..58e4461 100644
+--- a/node_modules/@cornerstonejs/tools/package.json
++++ b/node_modules/@cornerstonejs/tools/package.json
+@@ -15,11 +15,13 @@
+   "exports": {
+     ".": {
+       "import": "./dist/esm/index.js",
+-      "types": "./dist/esm/index.d.ts"
++      "types": "./dist/esm/index.d.ts",
++      "default": "./dist/esm/index.js"
+     },
+     "./utilities": {
+       "import": "./dist/esm/utilities/index.js",
+-      "types": "./dist/esm/utilities/index.d.ts"
++      "types": "./dist/esm/utilities/index.d.ts",
++      "default": "./dist/esm/utilities/index.js"
+     },
+     "./utilities/*": {
+       "import": "./dist/esm/utilities/*.js",

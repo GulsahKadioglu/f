@@ -1,0 +1,31 @@
+# This file specifies intentionally untracked files that Docker should ignore when building the FL node image.
+# It helps to keep the Docker image size small and avoid including unnecessary or sensitive files.
+
+# Ignore version control system directories and related files.
+.git
+.gitignore
+.dockerignore
+
+# Ignore Python-specific build artifacts and cache directories.
+__pycache__
+*.pyc
+*.pyo
+*.pyd
+.Python
+
+# Ignore Python virtual environment directories.
+env/
+venv/
+.venv/
+
+# Ignore DVC (Data Version Control) related files and directories.
+# These are typically managed by DVC and not needed inside the Docker image.
+dvc.yaml
+/data/
+/mlruns/
+
+# Ignore specific model files that might be generated locally but not needed in the image.
+final_model.pth
+
+# Ignore cache directories from linters or other tools.
+.ruff_cache/

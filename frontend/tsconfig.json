@@ -1,0 +1,75 @@
+{
+  // `compilerOptions` defines how TypeScript compiles your code.
+  "compilerOptions": {
+    // `baseUrl` specifies the base directory for resolving non-relative module names.
+    "baseUrl": ".",
+    // `lib` specifies a list of built-in library files to be included in the compilation.
+    "lib": [
+      "dom", // Provides DOM APIs.
+      "dom.iterable", // Provides DOM iteration APIs.
+      "esnext" // Includes all ECMAScript features up to the latest stable version.
+    ],
+    // `allowJs` allows JavaScript files to be included in the compilation.
+    "allowJs": true,
+    // `allowSyntheticDefaultImports` allows default imports from modules with no default export.
+    "allowSyntheticDefaultImports": true,
+    // `skipLibCheck` skips type checking of all declaration files (*.d.ts).
+    "skipLibCheck": true,
+    // `strict` enables all strict type-checking options.
+    "strict": true,
+    // `noEmit` prevents TypeScript from emitting output files (e.g., JavaScript files).
+    "noEmit": true,
+    // `esModuleInterop` enables compatibility with CommonJS modules when importing ES modules.
+    "esModuleInterop": true,
+    // `module` specifies the module code generation.
+    "module": "esnext",
+    // `moduleResolution` specifies the module resolution strategy.
+    "moduleResolution": "node",
+    // `resolveJsonModule` allows importing .json files as modules.
+    "resolveJsonModule": true,
+    // `isolatedModules` ensures that each file can be compiled independently.
+    "isolatedModules": true,
+    // `jsx` specifies the JSX factory to use.
+    "jsx": "preserve",
+    // `incremental` enables incremental compilation, which speeds up recompilation.
+    "incremental": true,
+    // `plugins` specifies a list of language service plugins to include.
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ],
+    // `paths` allows you to create module aliases.
+    "paths": {
+      "@/*": [
+        "./src/*"
+      ],
+      "@ohif/core": ["node_modules/@ohif/core/src/index.ts"],
+      "@ohif/extension-cornerstone": ["node_modules/@ohif/extension-cornerstone/src/index.ts"],
+      "@ohif/extension-default": ["node_modules/@ohif/extension-default/src/index.ts"],
+      "@ohif/extension-dicom-microscopy": ["node_modules/@ohif/extension-dicom-microscopy/src/index.ts"],
+      "@ohif/extension-dicom-pdf": ["node_modules/@ohif/extension-dicom-pdf/src/index.ts"],
+      "@ohif/extension-dicom-video": ["node_modules/@ohif/extension-dicom-video/src/index.ts"],
+      "@ohif/ui-next": ["node_modules/@ohif/ui-next/src/index.ts"],
+      "@cornerstonejs/tools": ["node_modules/@cornerstonejs/tools/src/index.ts"]
+    },
+    // `target` specifies the ECMAScript target version for the emitted JavaScript code.
+    "target": "ES2017",
+    // `forceConsistentCasingInFileNames` ensures that casing in file names is consistent.
+    "forceConsistentCasingInFileNames": true
+  },
+  // `include` specifies an array of glob patterns that define which files to include in the program.
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    ".next/types/**/*.ts",
+    "src/**/*.ts",
+    "src/**/*.tsx"
+  ],
+  // `exclude` specifies an array of glob patterns that define which files to exclude from the program.
+  "exclude": [
+    "node_modules",
+    ".next/types/validator.ts"
+  ]
+}

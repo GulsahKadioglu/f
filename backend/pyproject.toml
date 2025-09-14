@@ -1,0 +1,62 @@
+[project]
+name = "backend"
+version = "0.1.0"
+description = "FastAPI app for the Federated Cancer Screening Platform"
+authors = [
+    {name = "gulsah"}
+]
+readme = "README.md"
+requires-python = ">=3.9,<3.12"
+dependencies = [
+    "fastapi",
+    "uvicorn[standard]",
+    "sqlalchemy",
+    "psycopg2-binary",
+    "pydantic",
+    "databases",
+    "pydantic-settings",
+    "tenseal",
+    "alembic",
+    "captum",
+    "celery",
+    "redis",
+    "passlib[bcrypt]",
+    "python-jose[cryptography]",
+    "python-dotenv",
+    "httpx",
+    "pydantic-settings",
+    "fastapi-limiter",
+    "locust",
+    "email-validator (>=2.2.0,<3.0.0)",
+    "python-multipart (>=0.0.20,<0.0.21)",
+    "sqlalchemy-utils (>=0.41.2,<0.42.0)",
+    "pydicom",
+]
+
+# Note on Dependency Management:
+# This project primarily uses 'requirements.txt' for dependency management in Docker builds.
+# The '[tool.poetry]' section is present but not actively used for installation
+# in the current Docker setup. Consider fully migrating to Poetry or removing
+# Poetry-specific configurations if not intended for use.
+
+[tool.poetry]
+packages = [{include = "backend", from = "."}]
+package-mode = false
+
+
+
+[tool.poetry.group.dev.dependencies]
+ruff = "^0.12.8"
+pytest = "^8.4.1"
+pytest-asyncio = "^1.1.0"
+fakeredis = "^2.31.0"
+pytest-mock = "^3.12.0"
+
+[tool.ruff]
+line-length = 88
+select = ["E", "F", "W", "I", "N", "D"] # Error, Flake8, Warnings, Isort, Naming, Docstrings
+ignore = ["D100", "D104", "D105", "D107"] # Ignore missing docstrings for modules, packages, functions
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-app = "poetry.core.masonry.api"

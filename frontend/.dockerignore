@@ -1,0 +1,25 @@
+# This file specifies intentionally untracked files that Docker should ignore when building the frontend image.
+# It helps to keep the Docker image size small and avoid including unnecessary or sensitive files.
+
+# Ignore Node.js dependency directory.
+node_modules
+
+# Ignore Next.js build output directory.
+.next
+
+# Ignore local environment files, which often contain sensitive information.
+.env.local
+.env.*.local
+
+# Ignore npm and yarn debug logs.
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Ignore Plug'n'Play related files (Yarn 2+).
+.pnp
+.pnp.js
+
+# Ignore Playwright test reports and results.
+playwright-report/
+test-results/

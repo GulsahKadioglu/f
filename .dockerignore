@@ -1,0 +1,38 @@
+# This file specifies intentionally untracked files that Docker should ignore when building images.
+# It helps to keep the Docker image size small and avoid including unnecessary or sensitive files.
+
+# Ignore Python-specific build artifacts and cache directories.
+**/__pycache__/
+**/*.pyc
+**/*.pyo
+**/*.pyd
+
+# Ignore common log files and environment configuration files.
+**/*.log
+**/.env
+
+# Ignore version control system directories and macOS-specific files.
+**/.git
+**/.DS_Store
+
+# Ignore directories and files commonly used for data, logs, and machine learning artifacts.
+**/data/
+**/logs/
+**/artifacts/
+**/checkpoints/
+**/*.pt
+**/*.pth
+**/*.h5
+
+# Ignore common archive file formats.
+**/*.zip
+**/*.tar
+**/*.tar.gz
+
+# Ignore Node.js dependency directory.
+node_modules
+
+# Ignore common database files.
+*.csv
+*.db
+*.sqlite

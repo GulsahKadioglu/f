@@ -1,0 +1,69 @@
+# This is a Docker Compose file for the frontend and its backend dependencies.
+# It defines the services, networks, and volumes required to run the frontend and its associated backend services.
+
+version: "3.8"
+
+services:
+  # This service runs the PostgreSQL database for the frontend.
+  db:
+    image: postgres:13
+    container_name: postgres_db_frontend
+    volumes:
+      # This volume persists the database data.
+      - postgres_data_frontend:/var/lib/postgresql/data/
+    env_file:
+      # This file contains the environment variables for the database.
+      - ./backend/.env
+    ports:
+      # This maps the host port 5433 to the container port 5432 to avoid conflict with the backend-only setup.
+      - "5433:5432"
+
+  # This service runs the Redis server for the frontend.
+  redis:
+    image: redis:6.2-alpine
+    container_name: redis_frontend
+    ports:
+      # This maps the host port 6380 to the container port 6379 to avoid conflict.
+      - "6380:6379"
+
+  # This service runs the backend API for the frontend.
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: backend_api_for_frontend
+    depends_on:
+      # This service depends on the db and redis services.
+      - db
+      - redis
+    ports:
+      # This maps the host port 8000 to the container port 8000.
+      - "8000:8000"
+    env_file:
+      # This file contains the environment variables for the backend.
+      - ./backend/.env
+    volumes:
+      # This volume mounts the secure storage directory.
+      - ./secure_storage:/app/secure_storage
+      # This volume mounts the backend code for live changes.
+      - ./backend:/app
+
+  # This service runs the frontend UI.
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: frontend_ui
+    depends_on:
+      # This service depends on the backend service.
+      - backend
+    ports:
+      # This maps the host port 3000 to the container port 3000.
+      - "3000:3000"
+    environment:
+      # This sets the API URL for the frontend.
+      - NEXT_PUBLIC_API_URL=http://localhost:8000
+
+volumes:
+  # This defines the named volume for the PostgreSQL data.
+  postgres_data_frontend:

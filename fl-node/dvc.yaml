@@ -1,0 +1,60 @@
+
+    # dvc.yaml
+#
+# This file defines the Data Version Control (DVC) pipeline for the `fl-node`
+# component. DVC is used here to manage and version the data processing steps
+# (data validation, anonymization, and preprocessing) that occur on the client-side
+# before data is used for federated learning.
+#
+# Purpose:
+# - To define a reproducible data pipeline for preparing local datasets.
+# - To track dependencies between data processing stages and their outputs.
+# - To enable versioning of data and models, ensuring reproducibility of experiments.
+# - To facilitate collaboration by providing a clear definition of data transformations.
+#
+# Key Concepts:
+# - `stages`: Defines the individual steps in the data pipeline.
+# - `cmd`: The shell command executed for a given stage.
+# - `deps`: Dependencies (input files or directories) for a stage. If any dependency changes,
+#           the stage will be re-executed.
+# - `outs`: Outputs (files or directories) produced by a stage. These outputs are versioned by DVC.
+
+stages:
+  validate:
+    cmd: python src/data/validate.py data/raw data/validated_files.txt
+    deps:
+      - src/data/validate.py
+      - data/raw
+    outs:
+      - data/validated_files.txt
+
+  anonymize:
+    cmd: python src/data/anonymize.py data/validated_files.txt data/anonymized
+    deps:
+      - src/data/anonymize.py
+      - data/validated_files.txt
+    outs:
+      - data/anonymized
+
+  preprocess:
+    cmd: python src/data/preprocess.py data/anonymized data/preprocessed
+    deps:
+      - src/data/preprocess.py
+      - data/anonymized
+    outs:
+      - data/preprocessed
+
+  self_supervised_pretrain:
+    cmd: python src/self_supervised_pretrain.py --data_dir data/preprocessed --output_path final_model.pth
+    deps:
+      - src/self_supervised_pretrain.py
+      - data/preprocessed
+    outs:
+      - final_model.pth
+
+metrics:
+  - dvc_global_metrics.json
+
+params:
+  - dvc_global_params.yaml
+    

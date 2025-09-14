@@ -1,0 +1,152 @@
+# This is a GitHub Actions workflow file that defines the Continuous Integration (CI) pipeline.
+# It automates the process of testing and building the application whenever changes are pushed to the repository.
+
+name: CI Pipeline
+
+# This section defines the triggers for the workflow.
+# The workflow will run on any push or pull request to the `main` branch.
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+# This section defines the jobs that will be run as part of the workflow.
+jobs:
+  # This job runs the CI pipeline for the backend application.
+  app-ci:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        # This creates a build matrix to run the tests against multiple Python versions.
+        python-version: ["3.9", "3.10"]
+
+    steps:
+      # This step checks out the repository code.
+      - uses: actions/checkout@v3
+      # This step sets up the specified Python version.
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v3
+        with:
+          python-version: ${{ matrix.python-version }}
+      # This step caches the pip dependencies to speed up subsequent builds.
+      - name: Cache pip dependencies
+        uses: actions/cache@v3
+        with:
+          path: ~/.cache/pip
+          key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
+          restore-keys: |
+            ${{ runner.os }}-pip-
+      # This step installs the Python dependencies for the backend and FL node.
+      - name: Install Python Dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r backend/requirements.txt
+          pip install -r fl-node/requirements.txt
+          pip install dvc pip-audit bandit
+      # This step starts the database service using Docker Compose.
+      - name: Start Database and Initialize
+        run: |
+          docker compose up -d db db-init
+          # Wait for db-init to complete if necessary, though depends_on should handle it
+      # This step runs the linters on the Python code.
+      - name: Run Linters (Python)
+        run: |
+          ruff check backend/
+          ruff check fl-node/
+      # This step runs the Python tests.
+      - name: Run Tests (Python)
+        run: |
+          pytest backend/ --cov=app --cov-report=xml --cov-fail-under=80
+          pytest fl-node/ --cov=fl-node --cov-report=xml --cov-fail-under=80
+      # This step runs security scans on the Python code and dependencies.
+      - name: Run Security Scans (Python)
+        run: |
+          pip-audit -r backend/requirements.txt
+          pip-audit -r fl-node/requirements.txt
+          bandit -r backend/ -ll -f custom -o bandit_app_report.txt
+          bandit -r fl-node/ -ll -f custom -o bandit_flnode_report.txt
+      # This step stops the database service.
+      - name: Stop Database
+        run: docker compose down db
+      # This step builds the Docker images for all the services.
+      - name: Build Docker Images
+        run: |
+          docker compose build db redis backend celery-worker flower-server fl-node frontend nginx prometheus grafana
+          # Note: The frontend build might fail due to the lightningcss issue.
+      # This step runs the DVC pipeline for the FL node.
+      - name: Run DVC Pipeline (FL Node)
+        working-directory: fl-node
+        env:
+          MLFLOW_TRACKING_URI: ./mlruns
+        run: |
+          dvc init --no-scm
+          dvc pull
+          dvc repro
+      # This step uploads the MLflow artifacts.
+      - name: Upload MLflow Artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: mlflow-runs-${{ matrix.python-version }}
+          path: fl-node/mlruns
+
+  # This job runs the CI pipeline for the frontend application.
+  frontend-ci:
+    runs-on: ubuntu-latest
+    # This job depends on the `app-ci` job to complete successfully.
+    needs: app-ci
+    steps:
+      # This step checks out the repository code.
+      - uses: actions/checkout@v3
+      # This step sets up Node.js.
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: "18"
+      # This step caches the npm dependencies to speed up subsequent builds.
+      - name: Cache npm dependencies
+        uses: actions/cache@v3
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+      # This step installs the frontend dependencies, lints, builds, and tests the code.
+      - name: Install Frontend Dependencies, Lint, Build and Test
+        working-directory: frontend
+        run: |
+          npm install
+          npm audit
+          npm run lint
+          npm run build # Added build step
+          npm test
+
+  # This job runs the CI pipeline for the mobile application.
+  mobile-ci:
+    runs-on: ubuntu-latest
+    # This job depends on the `app-ci` job to complete successfully.
+    needs: app-ci
+    steps:
+      # This step checks out the repository code.
+      - uses: actions/checkout@v3
+      # This step sets up Node.js.
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: "18"
+      # This step caches the npm dependencies to speed up subsequent builds.
+      - name: Cache npm dependencies
+        uses: actions/cache@v3
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+      # This step installs the mobile app dependencies, lints, and tests the code.
+      - name: Install Mobile App Dependencies, Lint and Test
+        working-directory: mobile-app
+        run: |
+          npm install
+          npm audit
+          npm run lint
+          npm test

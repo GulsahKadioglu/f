@@ -1,0 +1,12 @@
+# This file specifies patterns for files and directories that ESLint should ignore during linting.
+# Ignoring unnecessary files helps to speed up the linting process and avoid linting generated or irrelevant code.
+
+# Exclude the Python-related federated learning node directory.
+fl-node/
+
+# Exclude common build, distribution, and virtual environment directories.
+# These typically contain generated code or dependencies that should not be linted.
+**/mlflow/
+**/build/
+**/dist/
+**/venv/

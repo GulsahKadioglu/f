@@ -1,0 +1,178 @@
+# This is the main Docker Compose file for the entire application.
+# It defines all the services, networks, and volumes required to run the application in a containerized environment.
+
+services:
+  # This service runs the PostgreSQL database.
+  db:
+    image: postgres:16
+    container_name: postgres_db
+    volumes:
+      # This volume persists the database data.
+      - postgres_data:/var/lib/postgresql/data/
+    env_file:
+      # This file contains the environment variables for the database.
+      - ./backend/.env
+    environment:
+      - LANG=C.UTF-8
+    ports:
+      # This maps the host port 5432 to the container port 5432.
+      - "5432:5432"
+    healthcheck:
+      # This command checks if the database is ready to accept connections.
+      test: ["CMD-SHELL", "pg_isready -U user -d postgres || exit 1"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 30s
+
+  # This service runs the Redis server.
+  redis:
+    image: redis:7.2-alpine
+    container_name: redis
+    ports:
+      # This maps the host port 6379 to the container port 6379.
+      - "6379:6379"
+
+  # This service initializes the database.
+  db-init:
+    image: postgres:16
+    container_name: db_initializer
+    depends_on:
+      db:
+        condition: service_healthy
+    env_file:
+      - ./backend/.env
+    command: >
+      bash -c 
+      "PGPASSWORD=${POSTGRES_PASSWORD} psql -h db -U ${POSTGRES_USER} -d postgres -c 'CREATE DATABASE ${POSTGRES_DB};' || true &&
+      PGPASSWORD=${POSTGRES_PASSWORD} psql -h db -U ${POSTGRES_USER} -d ${POSTGRES_DB} -c 'INSERT INTO users (email, hashed_password, is_active, is_superuser) VALUES (''test@example.com'', crypt(''testpassword'', gen_salt(''bf'')), true, true) ON CONFLICT (email) DO NOTHING;"
+    restart: "no"
+
+  # This service runs the Celery worker.
+  # celery-worker:
+  #   build:
+  #     context: ./backend
+  #   container_name: celery_worker
+  #   command: celery -A worker.celery_app worker --loglevel=info
+  #   depends_on:
+  #     - redis
+  #     - backend
+  #   volumes:
+  #     - ./backend:/app
+  #   deploy:
+  #     resources:
+  #       limits:
+  #         cpus: "0.3"
+  #         memory: 512M
+
+  # This service runs the Flower server.
+  # flower-server:
+  #   build:
+  #     context: ./backend/fl_server
+  #     dockerfile: Dockerfile
+  #   container_name: flower_server
+  #   depends_on:
+  #     - backend
+  #   ports:
+  #     - "8080:8080"
+  #   environment:
+  #     - PYTHONPATH=/app
+  #   volumes:
+  #     - .:/app
+  #   command: python /app/backend/fl_server/server.py
+  #   deploy:
+  #     resources:
+  #       limits:
+  #         cpus: "0.3"
+  #         memory: 1G
+
+  # This service runs the FL node client.
+  # fl-node:
+  #   build:
+  #     context: ./fl-node
+  #     dockerfile: Dockerfile
+  #   container_name: fl_node_client
+  #   depends_on:
+  #     - flower-server
+  #   volumes:
+  #     - ./fl-node:/app
+  #     - ./fl-node/data:/app/data
+  #   command: python -m src.client
+  #   deploy:
+  #     resources:
+  #       limits:
+  #         cpus: "0.5"
+  #         memory: 1.5G
+
+  # This service runs the frontend UI.
+  # frontend:
+  #   build:
+  #     context: ./frontend
+  #     dockerfile: Dockerfile
+  #   container_name: frontend_ui
+  #   depends_on:
+  #     - backend
+  #   environment:
+  #     - NEXT_PUBLIC_API_URL=http://localhost:8000
+  #   ports:
+  #     - "3000:3000"
+  #   deploy:
+  #     resources:
+  #       limits:
+  #         cpus: "0.5"
+  #         memory: 1G
+
+  # This service runs the Nginx proxy.
+  # nginx:
+  #   image: nginx:latest
+  #   container_name: nginx_proxy
+  #   ports:
+  #     - "80:80"
+  #     - "443:443"
+  #   volumes:
+  #     - ./nginx.conf:/etc/nginx/nginx.conf:ro
+  #   depends_on:
+  #     - frontend
+  #     - backend
+  #   deploy:
+  #     resources:
+  #       limits:
+  #         cpus: "0.2"
+  #         memory: 128M
+
+  # This service runs the Prometheus server.
+  prometheus:
+    image: prom/prometheus:latest
+    container_name: prometheus
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml:ro
+    command: --config.file=/etc/prometheus/prometheus.yml
+    deploy:
+      resources:
+        limits:
+          cpus: "0.3"
+          memory: 256M
+
+  # This service runs the Grafana server.
+  grafana:
+    image: grafana/grafana:latest
+    container_name: grafana
+    ports:
+      - "3001:3000"
+    volumes:
+      - grafana_data:/var/lib/grafana
+    depends_on:
+      - prometheus
+    deploy:
+      resources:
+        limits:
+          cpus: "0.3"
+          memory: 256M
+
+volumes:
+  # This defines the named volume for the PostgreSQL data.
+  postgres_data:
+  # This defines the named volume for the Grafana data.
+  grafana_data:

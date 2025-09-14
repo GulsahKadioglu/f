@@ -1,0 +1,12 @@
+# This file specifies intentionally untracked files that Git should ignore within the frontend directory.
+# It helps to keep the repository clean by excluding files that are generated or contain sensitive information.
+
+# Ignore Node.js dependency directory.
+node_modules/
+
+# Ignore Playwright test results and reports.
+# These are generated during test runs and should not be committed to version control.
+/test-results/
+/playwright-report/
+/blob-report/
+/playwright/.cache/

@@ -1,0 +1,59 @@
+# This is a Docker Compose file for the backend services of the application.
+# It defines the services, networks, and volumes required to run the backend.
+
+version: "3.8"
+
+services:
+  # This service runs the PostgreSQL database.
+  db:
+    image: postgres:16
+    container_name: postgres_db
+    volumes:
+      # This volume persists the database data.
+      - postgres_data:/var/lib/postgresql/data/
+    env_file:
+      # This file contains the environment variables for the database.
+      - ./backend/.env
+    ports:
+      # This maps the host port 5432 to the container port 5432.
+      - "5432:5432"
+
+  # This service runs the Redis server.
+  redis:
+    image: redis:7.2-alpine
+    container_name: redis
+    ports:
+      # This maps the host port 6379 to the container port 6379.
+      - "6379:6379"
+
+  # This service runs the backend API.
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: backend_api
+    depends_on:
+      # This service depends on the db and redis services.
+      - db
+      - redis
+    ports:
+      # This maps the host port 8000 to the container port 8000.
+      - "8000:8000"
+    env_file:
+      # This file contains the environment variables for the backend.
+      - ./backend/.env
+    volumes:
+      # This volume mounts the secure storage directory.
+      - ./secure_storage:/app/secure_storage
+      # This volume mounts the backend code for live changes.
+      - ./backend:/app
+    deploy:
+      resources:
+        limits:
+          # This limits the CPU and memory resources for the backend service.
+          cpus: "0.5"
+          memory: 768M
+
+volumes:
+  # This defines the named volume for the PostgreSQL data.
+  postgres_data:

@@ -1,0 +1,40 @@
+# This is the configuration file for Prometheus, a monitoring system.
+# It defines how Prometheus discovers targets and scrapes metrics from them.
+
+global:
+  # The scrape interval defines how often Prometheus will scrape targets.
+  scrape_interval: 15s
+  # The evaluation interval defines how often Prometheus will evaluate recording rules and alerting rules.
+  evaluation_interval: 15s
+
+# This section defines the scrape configurations.
+scrape_configs:
+  # This job scrapes metrics from Prometheus itself.
+  - job_name: 'prometheus'
+    static_configs:
+      - targets: ['localhost:9090']
+
+  # This job scrapes metrics from the backend application.
+  - job_name: 'backend'
+    static_configs:
+      - targets: ['backend:8000'] # Assuming 'backend' is the service name in Docker Compose
+
+  # This job scrapes metrics from the Node Exporter (if used for host-level metrics).
+  # - job_name: 'node_exporter'
+  #   static_configs:
+  #     - targets: ['node_exporter:9100']
+
+  # This job scrapes metrics from the Redis instance.
+  - job_name: 'redis'
+    static_configs:
+      - targets: ['redis:6379']
+
+  # This job scrapes metrics from the Flower server.
+  - job_name: 'flower'
+    static_configs:
+      - targets: ['flower-server:8080'] # Assuming 'flower-server' is the service name in Docker Compose
+
+  # This job scrapes metrics from the Grafana instance.
+  - job_name: 'grafana'
+    static_configs:
+      - targets: ['grafana:3000'] # Assuming 'grafana' is the service name in Docker Compose
