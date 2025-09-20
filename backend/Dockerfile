@@ -19,9 +19,12 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 # All subsequent commands will be executed relative to this directory.
 WORKDIR /app
 
+# Set PYTHONPATH so imports like `from backend...` work correctly.
+ENV PYTHONPATH=/app
+
 # Copy the Python dependency requirements file into the container.
 # This step is done separately to leverage Docker's build cache.
-COPY ./requirements.txt /app/requirements.txt
+COPY backend/requirements.txt /app/requirements.txt
 
 # Install Python dependencies.
 # `--no-cache-dir`: Disables the pip cache, reducing the final image size.
@@ -33,14 +36,16 @@ RUN pip install --no-cache-dir --upgrade -r /app/requirements.txt && \
     pip install --no-cache-dir torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cpu && \
     pip install --no-cache-dir captum
 
-# Copy the entire application code into the container.
-# This should be done after installing dependencies to take advantage of Docker's build cache.
-COPY . .
+# Copy the backend application code into the container.
+# This is done after installing dependencies to leverage Docker's build cache.
+COPY backend /app/backend
 
 # Command to run the application in production using Gunicorn with Uvicorn workers.
 # Gunicorn: A WSGI HTTP server for Unix, used to manage Uvicorn worker processes.
-# `main:app`: Specifies the FastAPI application entry point (the `app` object in the `main.py` module).
+# `backend.main:app`: Specifies the FastAPI application entry point (the `app` object in the `main.py` module inside the `backend` package).
 # `--workers 4`: Configures 4 Uvicorn worker processes for concurrency.
 # `--worker-class uvicorn.workers.UvicornWorker`: Specifies Uvicorn's ASGI worker class.
 # `--bind 0.0.0.0:8000`: Binds the server to all network interfaces on port 8000, making it accessible from outside the container.
-CMD ["gunicorn", "main:app", "--workers", "4", "--worker-class", "uvicorn.workers.UvicornWorker", "--bind", "0.0.0.0:8000"]
+CMD ["gunicorn", "backend.main:app", "--workers", "4", "--worker-class", "uvicorn.workers.UvicornWorker", "--bind", "0.0.0.0:8000"]
+
+

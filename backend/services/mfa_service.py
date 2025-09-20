@@ -9,8 +9,8 @@ from base64 import b64encode
 
 import pyotp
 import qrcode
-from .. import crud, schemas
-from ..models.user import User
+from  import crud, schemas
+from backend.models.user import User
 from sqlalchemy.orm import Session
 
 

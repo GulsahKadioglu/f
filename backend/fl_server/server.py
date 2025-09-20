@@ -37,11 +37,11 @@ from scipy import stats
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 
-from .. import crud, schemas
-from ..core.config import settings
-from ..db.base_class import Base
-from ..encryption_service import get_context
-from ..models.fl_metrics import FLRoundMetric
+from backend import crud, schemas
+from backend.core.config import settings
+from backend.db.base_class import Base
+from backend.encryption_service import get_context
+from backend.models.fl_metrics import FLRoundMetric
 
 
 def _setup_database():

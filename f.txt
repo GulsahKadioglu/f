@@ -1,0 +1,359 @@
+C:\Users\gulsa\federated-cancer-screening>docker-compose -f docker-compose.backend.yml build --no-cache
+[+] Building 10767.6s (15/15) FINISHED
+ => [internal] load local bake definitions                                                                                                                         0.1s
+ => => reading from stdin 626B                                                                                                                                     0.1s
+ => [internal] load build definition from Dockerfile                                                                                                               8.3s
+ => => transferring dockerfile: 2.86kB                                                                                                                             1.7s
+ => [internal] load metadata for docker.io/library/python:3.11-slim                                                                                               16.9s
+ => [auth] library/python:pull token for registry-1.docker.io                                                                                                      0.0s
+ => [internal] load .dockerignore                                                                                                                                  0.9s
+ => => transferring context: 734B                                                                                                                                  0.3s
+ => CACHED [1/6] FROM docker.io/library/python:3.11-slim@sha256:a0939570b38cddeb861b8e75d20b1c8218b21562b18f301171904b544e8cf228                                   4.0s
+ => => resolve docker.io/library/python:3.11-slim@sha256:a0939570b38cddeb861b8e75d20b1c8218b21562b18f301171904b544e8cf228                                          3.1s
+ => [internal] load build context                                                                                                                                  3.3s
+ => => transferring context: 30.51kB                                                                                                                               2.2s
+ => [auth] library/python:pull token for registry-1.docker.io                                                                                                      0.0s
+ => [2/6] RUN apt-get update && apt-get install -y --no-install-recommends     postgresql-client  && rm -rf /var/lib/apt/lists/*                                 257.8s
+ => [3/6] WORKDIR /app                                                                                                                                             3.8s
+ => [4/6] COPY ./requirements.txt /app/requirements.txt                                                                                                            3.9s
+ => [5/6] RUN pip install --no-cache-dir --upgrade -r /app/requirements.txt &&     pip install --no-cache-dir torch torchvision torchaudio --index-url https:/  8390.2s
+ => [6/6] COPY . /app                                                                                                                                             11.4s
+ => exporting to image                                                                                                                                          1970.0s
+ => => exporting layers                                                                                                                                         1114.8s
+ => => exporting manifest sha256:59b057c5672ddf859caca87a91cef1fa11d203b1bbcee52c3e8959a0f976be51                                                                  0.5s
+ => => exporting config sha256:4cf3047d472947f325bd7ca11db7255597b9639e55095c55669ed791f792b591                                                                    0.6s
+ => => exporting attestation manifest sha256:1cceadae9d6325bf079deb6fd25b3932b94de707b7064254665ae49819b83821                                                      1.2s
+ => => exporting manifest list sha256:13b80de5d076f147e4a009bde0a186141dbcc1d96f1e05184c0ed647472e42d4                                                             0.4s
+ => => naming to docker.io/library/federated-cancer-screening-backend:latest                                                                                       0.2s
+ => => unpacking to docker.io/library/federated-cancer-screening-backend:latest                                                                                  849.6s
+ => resolving provenance for metadata file                                                                                                                         4.3s
+[+] Building 1/1
+ ✔ federated-cancer-screening-backend  Built                                                                                                                       0.0s
+
+C:\Users\gulsa\federated-cancer-screening>
+C:\Users\gulsa\federated-cancer-screening>
+C:\Users\gulsa\federated-cancer-screening>
+C:\Users\gulsa\federated-cancer-screening>docker-compose -f docker-compose.yml -f docker-compose.backend.yml logs -f backend
+backend  | [2025-09-16 05:03:21 +0000] [1] [INFO] Starting gunicorn 22.0.0
+backend  | [2025-09-16 05:03:22 +0000] [1] [INFO] Listening at: http://0.0.0.0:8000 (1)
+backend  | [2025-09-16 05:03:22 +0000] [1] [INFO] Using worker: uvicorn.workers.UvicornWorker
+backend  | [2025-09-16 05:03:29 +0000] [8] [INFO] Booting worker with pid: 8
+backend  | [2025-09-16 05:03:25 +0000] [7] [INFO] Booting worker with pid: 7
+backend  | [2025-09-16 05:03:33 +0000] [9] [INFO] Booting worker with pid: 9
+backend  | [2025-09-16 05:03:42 +0000] [10] [INFO] Booting worker with pid: 10
+backend  | Form data requires "python-multipart" to be installed.
+backend  | You can install "python-multipart" with:
+backend  |
+backend  | pip install python-multipart
+backend  |
+backend  | Form data requires "python-multipart" to be installed.
+backend  | You can install "python-multipart" with:
+backend  |
+backend  | pip install python-multipart
+backend  |
+backend  | Form data requires "python-multipart" to be installed.
+backend  | You can install "python-multipart" with:
+backend  |
+backend  | pip install python-multipart
+backend  |
+backend  | Form data requires "python-multipart" to be installed.
+backend  | You can install "python-multipart" with:
+backend  |
+backend  | pip install python-multipart
+backend  |
+backend  | [2025-09-16 05:09:17 +0000] [7] [ERROR] Exception in worker process
+backend  | Traceback (most recent call last):
+backend  |   File "/usr/local/lib/python3.11/site-packages/gunicorn/arbiter.py", line 609, in spawn_worker
+backend  |     worker.init_process()
+backend  |   File "/usr/local/lib/python3.11/site-packages/uvicorn/workers.py", line 75, in init_process
+backend  |     super().init_process()
+backend  |   File "/usr/local/lib/python3.11/site-packages/gunicorn/workers/base.py", line 134, in init_process
+backend  |     self.load_wsgi()
+backend  |   File "/usr/local/lib/python3.11/site-packages/gunicorn/workers/base.py", line 146, in load_wsgi
+backend  |     self.wsgi = self.app.wsgi()
+backend  |                 ^^^^^^^^^^^^^^^
+backend  |   File "/usr/local/lib/python3.11/site-packages/gunicorn/app/base.py", line 67, in wsgi
+backend  |     self.callable = self.load()
+backend  |                     ^^^^^^^^^^^
+backend  |   File "/usr/local/lib/python3.11/site-packages/gunicorn/app/wsgiapp.py", line 58, in load
+backend  |     return self.load_wsgiapp()
+backend  |            ^^^^^^^^^^^^^^^^^^^
+backend  |   File "/usr/local/lib/python3.11/site-packages/gunicorn/app/wsgiapp.py", line 48, in load_wsgiapp
+backend  |     return util.import_app(self.app_uri)
+backend  |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+backend  |   File "/usr/local/lib/python3.11/site-packages/gunicorn/util.py", line 371, in import_app
+backend  |     mod = importlib.import_module(module)
+backend  |           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+backend  |   File "/usr/local/lib/python3.11/importlib/__init__.py", line 126, in import_module
+backend  |     return _bootstrap._gcd_import(name[level:], package, level)
+backend  |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+backend  |   File "<frozen importlib._bootstrap>", line 1204, in _gcd_import
+backend  |   File "<frozen importlib._bootstrap>", line 1176, in _find_and_load
+backend  |   File "<frozen importlib._bootstrap>", line 1147, in _find_and_load_unlocked
+backend  |   File "<frozen importlib._bootstrap>", line 690, in _load_unlocked
+backend  |   File "<frozen importlib._bootstrap_external>", line 940, in exec_module
+backend  |   File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+backend  |   File "/app/backend/main.py", line 35, in <module>
+backend  |     from api import auth, fl, medical_cases, mlflow, model_versions, reports
+backend  |   File "/app/api/auth.py", line 47, in <module>
+backend  |     @router.post(
+backend  |      ^^^^^^^^^^^^
+backend  |   File "/usr/local/lib/python3.11/site-packages/fastapi/routing.py", line 995, in decorator
+backend  |     self.add_api_route(
+backend  |   File "/usr/local/lib/python3.11/site-packages/fastapi/routing.py", line 934, in add_api_route
+backend  |     route = route_class(
+backend  |             ^^^^^^^^^^^^
+backend  |   File "/usr/local/lib/python3.11/site-packages/fastapi/routing.py", line 555, in __init__
+backend  |     self.dependant = get_dependant(path=self.path_format, call=self.endpoint)
+backend  |                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+backend  |   File "/usr/local/lib/python3.11/site-packages/fastapi/dependencies/utils.py", line 292, in get_dependant
+backend  |     sub_dependant = get_param_sub_dependant(
+backend  |                     ^^^^^^^^^^^^^^^^^^^^^^^^
+backend  |   File "/usr/local/lib/python3.11/site-packages/fastapi/dependencies/utils.py", line 126, in get_param_sub_dependant
+backend  |     return get_sub_dependant(
+backend  |            ^^^^^^^^^^^^^^^^^^
+backend  |   File "/usr/local/lib/python3.11/site-packages/fastapi/dependencies/utils.py", line 162, in get_sub_dependant
+backend  |     sub_dependant = get_dependant(
+backend  |                     ^^^^^^^^^^^^^^
+backend  |   File "/usr/local/lib/python3.11/site-packages/fastapi/dependencies/utils.py", line 285, in get_dependant
+backend  |     param_details = analyze_param(
+backend  |                     ^^^^^^^^^^^^^^
+backend  |   File "/usr/local/lib/python3.11/site-packages/fastapi/dependencies/utils.py", line 482, in analyze_param
+backend  |     ensure_multipart_is_installed()
+backend  |   File "/usr/local/lib/python3.11/site-packages/fastapi/dependencies/utils.py", line 115, in ensure_multipart_is_installed
+backend  |     raise RuntimeError(multipart_not_installed_error) from None
+backend  | RuntimeError: Form data requires "python-multipart" to be installed.
+backend  | You can install "python-multipart" with:
+backend  |
+backend  | pip install python-multipart
+backend  |
+backend  | [2025-09-16 05:09:20 +0000] [7] [INFO] Worker exiting (pid: 7)
+backend  | [2025-09-16 05:09:17 +0000] [10] [ERROR] Exception in worker process
+backend  | Traceback (most recent call last):
+backend  |   File "/usr/local/lib/python3.11/site-packages/gunicorn/arbiter.py", line 609, in spawn_worker
+backend  |     worker.init_process()
+backend  |   File "/usr/local/lib/python3.11/site-packages/uvicorn/workers.py", line 75, in init_process
+backend  |     super().init_process()
+backend  |   File "/usr/local/lib/python3.11/site-packages/gunicorn/workers/base.py", line 134, in init_process
+backend  |     self.load_wsgi()
+backend  |   File "/usr/local/lib/python3.11/site-packages/gunicorn/workers/base.py", line 146, in load_wsgi
+backend  |     self.wsgi = self.app.wsgi()
+backend  |                 ^^^^^^^^^^^^^^^
+backend  |   File "/usr/local/lib/python3.11/site-packages/gunicorn/app/base.py", line 67, in wsgi
+backend  |     self.callable = self.load()
+backend  |                     ^^^^^^^^^^^
+backend  |   File "/usr/local/lib/python3.11/site-packages/gunicorn/app/wsgiapp.py", line 58, in load
+backend  |     return self.load_wsgiapp()
+backend  |            ^^^^^^^^^^^^^^^^^^^
+backend  |   File "/usr/local/lib/python3.11/site-packages/gunicorn/app/wsgiapp.py", line 48, in load_wsgiapp
+backend  |     return util.import_app(self.app_uri)
+backend  |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+backend  |   File "/usr/local/lib/python3.11/site-packages/gunicorn/util.py", line 371, in import_app
+backend  |     mod = importlib.import_module(module)
+backend  |           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+backend  |   File "/usr/local/lib/python3.11/importlib/__init__.py", line 126, in import_module
+backend  |     return _bootstrap._gcd_import(name[level:], package, level)
+backend  |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+backend  |   File "<frozen importlib._bootstrap>", line 1204, in _gcd_import
+backend  |   File "<frozen importlib._bootstrap>", line 1176, in _find_and_load
+backend  |   File "<frozen importlib._bootstrap>", line 1147, in _find_and_load_unlocked
+backend  |   File "<frozen importlib._bootstrap>", line 690, in _load_unlocked
+backend  |   File "<frozen importlib._bootstrap_external>", line 940, in exec_module
+backend  |   File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+backend  |   File "/app/backend/main.py", line 35, in <module>
+backend  |     from api import auth, fl, medical_cases, mlflow, model_versions, reports
+backend  |   File "/app/api/auth.py", line 47, in <module>
+backend  |     @router.post(
+backend  |      ^^^^^^^^^^^^
+backend  |   File "/usr/local/lib/python3.11/site-packages/fastapi/routing.py", line 995, in decorator
+backend  |     self.add_api_route(
+backend  |   File "/usr/local/lib/python3.11/site-packages/fastapi/routing.py", line 934, in add_api_route
+backend  |     route = route_class(
+backend  |             ^^^^^^^^^^^^
+backend  |   File "/usr/local/lib/python3.11/site-packages/fastapi/routing.py", line 555, in __init__
+backend  |     self.dependant = get_dependant(path=self.path_format, call=self.endpoint)
+backend  |                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+backend  |   File "/usr/local/lib/python3.11/site-packages/fastapi/dependencies/utils.py", line 292, in get_dependant
+backend  |     sub_dependant = get_param_sub_dependant(
+backend  |                     ^^^^^^^^^^^^^^^^^^^^^^^^
+backend  |   File "/usr/local/lib/python3.11/site-packages/fastapi/dependencies/utils.py", line 126, in get_param_sub_dependant
+backend  |     return get_sub_dependant(
+backend  |            ^^^^^^^^^^^^^^^^^^
+backend  |   File "/usr/local/lib/python3.11/site-packages/fastapi/dependencies/utils.py", line 162, in get_sub_dependant
+backend  |     sub_dependant = get_dependant(
+backend  |                     ^^^^^^^^^^^^^^
+backend  |   File "/usr/local/lib/python3.11/site-packages/fastapi/dependencies/utils.py", line 285, in get_dependant
+backend  |     param_details = analyze_param(
+backend  |                     ^^^^^^^^^^^^^^
+backend  |   File "/usr/local/lib/python3.11/site-packages/fastapi/dependencies/utils.py", line 482, in analyze_param
+backend  |     ensure_multipart_is_installed()
+backend  |   File "/usr/local/lib/python3.11/site-packages/fastapi/dependencies/utils.py", line 115, in ensure_multipart_is_installed
+backend  |     raise RuntimeError(multipart_not_installed_error) from None
+backend  | RuntimeError: Form data requires "python-multipart" to be installed.
+backend  | You can install "python-multipart" with:
+backend  |
+backend  | pip install python-multipart
+backend  |
+backend  | [2025-09-16 05:09:21 +0000] [10] [INFO] Worker exiting (pid: 10)
+backend  | [2025-09-16 05:09:17 +0000] [9] [ERROR] Exception in worker process
+backend  | Traceback (most recent call last):
+backend  |   File "/usr/local/lib/python3.11/site-packages/gunicorn/arbiter.py", line 609, in spawn_worker
+backend  |     worker.init_process()
+backend  |   File "/usr/local/lib/python3.11/site-packages/uvicorn/workers.py", line 75, in init_process
+backend  |     super().init_process()
+backend  |   File "/usr/local/lib/python3.11/site-packages/gunicorn/workers/base.py", line 134, in init_process
+backend  |     self.load_wsgi()
+backend  |   File "/usr/local/lib/python3.11/site-packages/gunicorn/workers/base.py", line 146, in load_wsgi
+backend  |     self.wsgi = self.app.wsgi()
+backend  |                 ^^^^^^^^^^^^^^^
+backend  |   File "/usr/local/lib/python3.11/site-packages/gunicorn/app/base.py", line 67, in wsgi
+backend  |     self.callable = self.load()
+backend  |                     ^^^^^^^^^^^
+backend  |   File "/usr/local/lib/python3.11/site-packages/gunicorn/app/wsgiapp.py", line 58, in load
+backend  |     return self.load_wsgiapp()
+backend  |            ^^^^^^^^^^^^^^^^^^^
+backend  |   File "/usr/local/lib/python3.11/site-packages/gunicorn/app/wsgiapp.py", line 48, in load_wsgiapp
+backend  |     return util.import_app(self.app_uri)
+backend  |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+backend  |   File "/usr/local/lib/python3.11/site-packages/gunicorn/util.py", line 371, in import_app
+backend  |     mod = importlib.import_module(module)
+backend  |           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+backend  |   File "/usr/local/lib/python3.11/importlib/__init__.py", line 126, in import_module
+backend  |     return _bootstrap._gcd_import(name[level:], package, level)
+backend  |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+backend  |   File "<frozen importlib._bootstrap>", line 1204, in _gcd_import
+backend  |   File "<frozen importlib._bootstrap>", line 1176, in _find_and_load
+backend  |   File "<frozen importlib._bootstrap>", line 1147, in _find_and_load_unlocked
+backend  |   File "<frozen importlib._bootstrap>", line 690, in _load_unlocked
+backend  |   File "<frozen importlib._bootstrap_external>", line 940, in exec_module
+backend  |   File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+backend  |   File "/app/backend/main.py", line 35, in <module>
+backend  |     from api import auth, fl, medical_cases, mlflow, model_versions, reports
+backend  |   File "/app/api/auth.py", line 47, in <module>
+backend  |     @router.post(
+backend  |      ^^^^^^^^^^^^
+backend  |   File "/usr/local/lib/python3.11/site-packages/fastapi/routing.py", line 995, in decorator
+backend  |     self.add_api_route(
+backend  |   File "/usr/local/lib/python3.11/site-packages/fastapi/routing.py", line 934, in add_api_route
+backend  |     route = route_class(
+backend  |             ^^^^^^^^^^^^
+backend  |   File "/usr/local/lib/python3.11/site-packages/fastapi/routing.py", line 555, in __init__
+backend  |     self.dependant = get_dependant(path=self.path_format, call=self.endpoint)
+backend  |                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+backend  |   File "/usr/local/lib/python3.11/site-packages/fastapi/dependencies/utils.py", line 292, in get_dependant
+backend  |     sub_dependant = get_param_sub_dependant(
+backend  |                     ^^^^^^^^^^^^^^^^^^^^^^^^
+backend  |   File "/usr/local/lib/python3.11/site-packages/fastapi/dependencies/utils.py", line 126, in get_param_sub_dependant
+backend  |     return get_sub_dependant(
+backend  |            ^^^^^^^^^^^^^^^^^^
+backend  |   File "/usr/local/lib/python3.11/site-packages/fastapi/dependencies/utils.py", line 162, in get_sub_dependant
+backend  |     sub_dependant = get_dependant(
+backend  |                     ^^^^^^^^^^^^^^
+backend  |   File "/usr/local/lib/python3.11/site-packages/fastapi/dependencies/utils.py", line 285, in get_dependant
+backend  |     param_details = analyze_param(
+backend  |                     ^^^^^^^^^^^^^^
+backend  |   File "/usr/local/lib/python3.11/site-packages/fastapi/dependencies/utils.py", line 482, in analyze_param
+backend  |     ensure_multipart_is_installed()
+backend  |   File "/usr/local/lib/python3.11/site-packages/fastapi/dependencies/utils.py", line 115, in ensure_multipart_is_installed
+backend  |     raise RuntimeError(multipart_not_installed_error) from None
+backend  | RuntimeError: Form data requires "python-multipart" to be installed.
+backend  | You can install "python-multipart" with:
+backend  |
+backend  | pip install python-multipart
+backend  |
+backend  | [2025-09-16 05:09:22 +0000] [9] [INFO] Worker exiting (pid: 9)
+backend  | [2025-09-16 05:09:18 +0000] [8] [ERROR] Exception in worker process
+backend  | Traceback (most recent call last):
+backend  |   File "/usr/local/lib/python3.11/site-packages/gunicorn/arbiter.py", line 609, in spawn_worker
+backend  |     worker.init_process()
+backend  |   File "/usr/local/lib/python3.11/site-packages/uvicorn/workers.py", line 75, in init_process
+backend  |     super().init_process()
+backend  |   File "/usr/local/lib/python3.11/site-packages/gunicorn/workers/base.py", line 134, in init_process
+backend  |     self.load_wsgi()
+backend  |   File "/usr/local/lib/python3.11/site-packages/gunicorn/workers/base.py", line 146, in load_wsgi
+backend  |     self.wsgi = self.app.wsgi()
+backend  |                 ^^^^^^^^^^^^^^^
+backend  |   File "/usr/local/lib/python3.11/site-packages/gunicorn/app/base.py", line 67, in wsgi
+backend  |     self.callable = self.load()
+backend  |                     ^^^^^^^^^^^
+backend  |   File "/usr/local/lib/python3.11/site-packages/gunicorn/app/wsgiapp.py", line 58, in load
+backend  |     return self.load_wsgiapp()
+backend  |            ^^^^^^^^^^^^^^^^^^^
+backend  |   File "/usr/local/lib/python3.11/site-packages/gunicorn/app/wsgiapp.py", line 48, in load_wsgiapp
+backend  |     return util.import_app(self.app_uri)
+backend  |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+backend  |   File "/usr/local/lib/python3.11/site-packages/gunicorn/util.py", line 371, in import_app
+backend  |     mod = importlib.import_module(module)
+backend  |           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+backend  |   File "/usr/local/lib/python3.11/importlib/__init__.py", line 126, in import_module
+backend  |     return _bootstrap._gcd_import(name[level:], package, level)
+backend  |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+backend  |   File "<frozen importlib._bootstrap>", line 1204, in _gcd_import
+backend  |   File "<frozen importlib._bootstrap>", line 1176, in _find_and_load
+backend  |   File "<frozen importlib._bootstrap>", line 1147, in _find_and_load_unlocked
+backend  |   File "<frozen importlib._bootstrap>", line 690, in _load_unlocked
+backend  |   File "<frozen importlib._bootstrap_external>", line 940, in exec_module
+backend  |   File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+backend  |   File "/app/backend/main.py", line 35, in <module>
+backend  |     from api import auth, fl, medical_cases, mlflow, model_versions, reports
+backend  |   File "/app/api/auth.py", line 47, in <module>
+backend  |     @router.post(
+backend  |      ^^^^^^^^^^^^
+backend  |   File "/usr/local/lib/python3.11/site-packages/fastapi/routing.py", line 995, in decorator
+backend  |     self.add_api_route(
+backend  |   File "/usr/local/lib/python3.11/site-packages/fastapi/routing.py", line 934, in add_api_route
+backend  |     route = route_class(
+backend  |             ^^^^^^^^^^^^
+backend  |   File "/usr/local/lib/python3.11/site-packages/fastapi/routing.py", line 555, in __init__
+backend  |     self.dependant = get_dependant(path=self.path_format, call=self.endpoint)
+backend  |                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+backend  |   File "/usr/local/lib/python3.11/site-packages/fastapi/dependencies/utils.py", line 292, in get_dependant
+backend  |     sub_dependant = get_param_sub_dependant(
+backend  |                     ^^^^^^^^^^^^^^^^^^^^^^^^
+backend  |   File "/usr/local/lib/python3.11/site-packages/fastapi/dependencies/utils.py", line 126, in get_param_sub_dependant
+backend  |     return get_sub_dependant(
+backend  |            ^^^^^^^^^^^^^^^^^^
+backend  |   File "/usr/local/lib/python3.11/site-packages/fastapi/dependencies/utils.py", line 162, in get_sub_dependant
+backend  |     sub_dependant = get_dependant(
+backend  |                     ^^^^^^^^^^^^^^
+backend  |   File "/usr/local/lib/python3.11/site-packages/fastapi/dependencies/utils.py", line 285, in get_dependant
+backend  |     param_details = analyze_param(
+backend  |                     ^^^^^^^^^^^^^^
+backend  |   File "/usr/local/lib/python3.11/site-packages/fastapi/dependencies/utils.py", line 482, in analyze_param
+backend  |     ensure_multipart_is_installed()
+backend  |   File "/usr/local/lib/python3.11/site-packages/fastapi/dependencies/utils.py", line 115, in ensure_multipart_is_installed
+backend  |     raise RuntimeError(multipart_not_installed_error) from None
+backend  | RuntimeError: Form data requires "python-multipart" to be installed.
+backend  | You can install "python-multipart" with:
+backend  |
+backend  | pip install python-multipart
+backend  |
+backend  | [2025-09-16 05:09:22 +0000] [8] [INFO] Worker exiting (pid: 8)
+backend  | [2025-09-16 05:09:36 +0000] [1] [ERROR] Worker (pid:10) exited with code 3
+backend  | [2025-09-16 05:09:36 +0000] [1] [ERROR] Worker (pid:7) was sent SIGTERM!
+backend  | [2025-09-16 05:09:36 +0000] [1] [ERROR] Worker (pid:8) was sent SIGTERM!
+backend  | [2025-09-16 05:09:36 +0000] [1] [ERROR] Worker (pid:9) was sent SIGTERM!
+backend  | [2025-09-16 05:09:36 +0000] [1] [ERROR] Shutting down: Master
+backend  | [2025-09-16 05:09:36 +0000] [1] [ERROR] Reason: Worker failed to boot.
+
+---
+### Derinlemesine Analiz (Sonuç)
+
+**1. Ana Hata ve Çökme Nedeni (Kritik):**
+*   Loglardaki en önemli bulgu, uygulamanın başlamasını engelleyen ve "Worker failed to boot" hatasına yol açan kritik hatadır:
+    ```
+    RuntimeError: Form data requires "python-multipart" to be installed.
+    ```
+*   **Hatanın Anlamı:** Uygulama, bir API rotasının web formlarından veri alması gerektiğini tespit etmiş, ancak bu işi yapacak olan `python-multipart` kütüphanesini bulamamıştır. Bu kütüphane eksikliği, uygulamanın daha başlangıç aşamasında çökmesine neden olmaktadır.
+*   **Çözüm:** Bu sorunu çözmek için `python-multipart` kütüphanesinin projenin bağımlılıklarına (`backend/requirements.txt` dosyasına) eklenmesi gerekmektedir.
+
+**2. Diğer Uyarılar ve Gözlemler (Kritik Değil):**
+*   **`the attribute 'version' is obsolete` Uyarısı:** Loglarda `docker-compose` komutlarının bu uyarıyı verdiğini görebiliriz. Bu, `docker-compose.yml` dosyalarındaki `version: "3.x"` satırlarının artık modern Docker versiyonlarında bir işlevinin olmadığını ve dikkate alınmadığını belirtir. Bu bir hata değildir ve uygulamanın çökmesine **neden olmaz**. Sadece bilgilendirme amaçlıdır ve bu satırların kaldırılması "temiz kod" prensibi gereği tavsiye edilir (ki önceki adımlarımızda bunu yapmıştık).
+*   **Uzun Build Süresi:** Docker imajının oluşturulmasının (`[+] Building ...`) yaklaşık 3 saat sürmesi dikkat çekicidir. Bu bir hata olmasa da, projenin `torch` gibi çok büyük yapay zeka kütüphanelerine bağımlı olduğunu ve geliştirme ortamının kurulumunun yavaş olabileceğini gösteren önemli bir gözlemdir.
+
+**3. Önceki Hataların Durumu:**
+*   Daha önce mücadele ettiğimiz `ModuleNotFoundError: No module named 'backend'` hatasının **başarıyla çözüldüğü** loglardaki `/app/backend/main.py` dosya yolundan anlaşılmaktadır. Yapılandırma artık doğrudur.
+
+**Nihai Sonuç:**
+Uygulamanın çökmesinin tek ve net sebebi, `python-multipart` kütüphanesinin eksikliğidir. Diğer uyarılar ve gözlemler, projenin genel durumu hakkında bilgi verse de acil bir müdahale gerektirmemektedir. Öncelik, kritik hatanın giderilmesidir.
+---

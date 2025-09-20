@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/gulsa/YZTA074/federated-cancer-screening/fl-node/mlruns/0/ce078de39eae4ffca5683c4fdbccf2d9/artifacts
+end_time: 1756037001733
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: ce078de39eae4ffca5683c4fdbccf2d9
+run_name: debonair-wasp-540
+run_uuid: ce078de39eae4ffca5683c4fdbccf2d9
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1756036999237
+status: 3
+tags: []
+user_id: gulsa

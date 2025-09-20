@@ -21,12 +21,3 @@ from .medical_image import MedicalImage
 from .model_version import ModelVersion
 from .report import AnalysisReport
 from .user import User
-
-__all__ = [
-    "User",
-    "AnalysisReport",
-    "FLRoundMetric",
-    "MedicalCase",
-    "MedicalImage",
-    "ModelVersion",
-]

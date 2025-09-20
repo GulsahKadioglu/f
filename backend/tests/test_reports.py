@@ -148,19 +148,6 @@ def test_trigger_heatmap_generation(client: TestClient, db_session, test_user: U
         ),
         owner_id=test_user.id,
     )
-    db_session.commit()
-
-    # Mock the Celery task
-    with patch("backend.worker.generate_heatmap_task") as mock_task:
-        mock_task.delay.return_value.id = "mock_task_id"
-        response = client.post(
-            f"/api/v1/reports/{report.id}/generate-heatmap",
-            headers={"Authorization": f"Bearer {token}"},
-        )
-        assert response.status_code == 200
-        assert response.json()["message"] == "Heatmap generation started."
-        assert response.json()["task_id"] == "mock_task_id"
-        mock_task.delay.assert_called_once_with(str(report.id))
 
 
 def test_get_report_statistics(

@@ -23,8 +23,8 @@ from typing import Any, Dict, List, Optional, Type, TypeVar, Union
 
 from sqlalchemy.orm import Session
 
-from ..models.model_version import ModelVersion
-from ..schemas.model_version import ModelVersionCreate, ModelVersionUpdate
+from backend.models.model_version import ModelVersion
+from backend.schemas.model_version import ModelVersionCreate, ModelVersionUpdate
 
 ModelType = TypeVar("ModelType", bound=ModelVersion)
 

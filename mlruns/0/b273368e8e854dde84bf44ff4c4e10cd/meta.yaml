@@ -1,0 +1,14 @@
+artifact_uri: file:///C:/Users/gulsa/YZTA074/federated-cancer-screening/mlruns/0/b273368e8e854dde84bf44ff4c4e10cd/artifacts
+end_time: 1754613706849
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: b273368e8e854dde84bf44ff4c4e10cd
+run_name: carefree-snail-692
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1754613705688
+status: 3
+tags: []
+user_id: gulsa

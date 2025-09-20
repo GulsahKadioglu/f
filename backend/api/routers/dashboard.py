@@ -19,10 +19,10 @@ Key Components:
   and active.
 """
 
-from .. import deps
-from ...models.user import User
-from ...schemas.dashboard import DashboardData
-from ...services import dashboard_service
+from backend import deps
+from backend.models.user import User
+from backend.schemas.dashboard import DashboardData
+from backend.services import dashboard_service
 from fastapi import APIRouter, Depends
 from sqlalchemy.orm import Session
 

@@ -22,10 +22,10 @@ from typing import List, Optional, TypeVar
 
 from sqlalchemy.orm import Session, joinedload
 
-from ..models.medical_image import MedicalImage
-from ..schemas.medical_case import MedicalCaseCreate, MedicalCaseUpdate
+from backend.models.medical_image import MedicalImage
+from backend.schemas.medical_case import MedicalCaseCreate, MedicalCaseUpdate
 
-from ..models.medical_case import MedicalCase
+from backend.models.medical_case import MedicalCase
 
 ModelType = TypeVar("ModelType", bound=MedicalCase)
 

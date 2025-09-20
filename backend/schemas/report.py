@@ -26,7 +26,7 @@ from typing import Optional
 
 from pydantic import BaseModel, ConfigDict
 
-from ..models.report import ReportStatus
+from backend.models.report import ReportStatus
 
 
 class ReportBase(BaseModel):

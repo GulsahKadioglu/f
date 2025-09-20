@@ -20,11 +20,11 @@ Key Components:
 """
 
 from sqlalchemy import Column, DateTime, ForeignKey, Integer, String
-from ..db.types import GUID
+from backend.db.types import GUID
 from sqlalchemy.orm import relationship
 from sqlalchemy.sql import func
 
-from ..db.base_class import Base
+from backend.db.base_class import Base
 
 
 class MedicalCase(Base):
@@ -71,7 +71,7 @@ class MedicalCase(Base):
 
     # Relationships
     medical_images = relationship(
-        "MedicalImage", back_populates="medical_case", cascade="all, delete-orphan"
+        "models.medical_image.MedicalImage", back_populates="medical_case", cascade="all, delete-orphan"
     )
 
-    __table_args__ = ()
+    __table_args__ = {'extend_existing': True}

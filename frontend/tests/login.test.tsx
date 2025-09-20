@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
-import LoginPage from './login';
+import LoginPage from '../pages/login';
 
 // Mock the useRouter hook
 jest.mock('next/router', () => ({

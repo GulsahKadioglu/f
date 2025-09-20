@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/gulsa/YZTA074/federated-cancer-screening/fl-node/mlruns/0/08d7fb9a5151429ebf0b3bc550b584e4/artifacts
+end_time: 1756899478848
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 08d7fb9a5151429ebf0b3bc550b584e4
+run_name: magnificent-shad-673
+run_uuid: 08d7fb9a5151429ebf0b3bc550b584e4
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1756899478458
+status: 3
+tags: []
+user_id: gulsa

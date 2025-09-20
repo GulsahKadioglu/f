@@ -6,7 +6,7 @@ This file defines the Pydantic schemas for Multi-Factor Authentication (MFA).
 
 from pydantic import BaseModel
 
-from .user import User
+from user import User
 
 
 class MFASetupResponse(User):

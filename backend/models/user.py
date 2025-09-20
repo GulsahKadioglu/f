@@ -23,9 +23,9 @@ import enum
 import uuid
 
 from sqlalchemy import Boolean, Column, Enum, String
-from ..db.types import GUID
+from backend.db.types import GUID
 
-from ..db.base_class import Base
+from backend.db.base_class import Base
 
 
 class UserRole(str, enum.Enum):
@@ -125,6 +125,7 @@ class User(Base):
     """
 
     __tablename__ = "users"
+    __table_args__ = {"extend_existing": True}
     id = Column(GUID, primary_key=True, default=uuid.uuid4)
     email = Column(String, unique=True, index=True, nullable=False)
     hashed_password = Column(String, nullable=False)

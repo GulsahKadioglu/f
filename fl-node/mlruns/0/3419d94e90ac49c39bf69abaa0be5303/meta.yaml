@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/gulsa/YZTA074/federated-cancer-screening/fl-node/mlruns/0/3419d94e90ac49c39bf69abaa0be5303/artifacts
+end_time: 1758328888913
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 3419d94e90ac49c39bf69abaa0be5303
+run_name: resilient-moose-569
+run_uuid: 3419d94e90ac49c39bf69abaa0be5303
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1758328884802
+status: 3
+tags: []
+user_id: gulsa

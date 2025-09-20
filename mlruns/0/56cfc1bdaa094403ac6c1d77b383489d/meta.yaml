@@ -1,0 +1,14 @@
+artifact_uri: file:///C:/Users/gulsa/YZTA074/federated-cancer-screening/mlruns/0/56cfc1bdaa094403ac6c1d77b383489d/artifacts
+end_time: 1754614226079
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 56cfc1bdaa094403ac6c1d77b383489d
+run_name: likeable-moose-357
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1754614225097
+status: 3
+tags: []
+user_id: gulsa

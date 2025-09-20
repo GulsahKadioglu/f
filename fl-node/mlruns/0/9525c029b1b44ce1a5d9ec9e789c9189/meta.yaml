@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/gulsa/YZTA074/federated-cancer-screening/fl-node/mlruns/0/9525c029b1b44ce1a5d9ec9e789c9189/artifacts
+end_time: 1756980632831
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 9525c029b1b44ce1a5d9ec9e789c9189
+run_name: classy-goat-929
+run_uuid: 9525c029b1b44ce1a5d9ec9e789c9189
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1756980631977
+status: 3
+tags: []
+user_id: gulsa

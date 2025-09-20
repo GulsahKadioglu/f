@@ -7,8 +7,13 @@ It is separated from security.py to avoid circular dependencies.
 """
 
 from passlib.context import CryptContext
+from passlib.hash import bcrypt
 
-pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
+# Force bcrypt to use the 'bcrypt' backend, preventing fallback to 'os_crypt'
+# and avoiding the DeprecationWarning for the 'crypt' module.
+bcrypt.set_backend("bcrypt")
+
+pwd_context = CryptContext(schemes=[bcrypt], deprecated="auto")
 
 
 def verify_password(plain_password: str, hashed_password: str) -> bool:

@@ -4,10 +4,10 @@
 This file defines the API endpoints for Multi-Factor Authentication (MFA).
 """
 
-from .deps import get_current_active_user, get_db
-from ..models.user import User
-from ..schemas.mfa import MFACode, MFASetupResponse
-from ..services import mfa_service
+from backend.api.deps import get_current_active_user, get_db
+from backend.models.user import User
+from backend.schemas.mfa import MFACode, MFASetupResponse
+from backend.services import mfa_service
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
 

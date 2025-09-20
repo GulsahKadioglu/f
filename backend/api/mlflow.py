@@ -23,10 +23,10 @@ import os
 from typing import List
 
 import yaml
-from .. import schemas
-from ..core.security import has_permission
-from ..db.session import get_db
-from ..models.user import Permission, User
+from backend import schemas
+from backend.core.security import has_permission
+from backend.db.session import get_db
+from backend.models.user import Permission, User
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
 

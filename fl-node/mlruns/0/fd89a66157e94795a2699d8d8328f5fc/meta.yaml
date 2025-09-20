@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/gulsa/YZTA074/federated-cancer-screening/fl-node/mlruns/0/fd89a66157e94795a2699d8d8328f5fc/artifacts
+end_time: 1756983147351
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: fd89a66157e94795a2699d8d8328f5fc
+run_name: victorious-rat-800
+run_uuid: fd89a66157e94795a2699d8d8328f5fc
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1756983147085
+status: 3
+tags: []
+user_id: gulsa

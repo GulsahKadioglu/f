@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/gulsa/YZTA074/federated-cancer-screening/fl-node/mlruns/0/6d246ba097004f29b25292f856de1e11/artifacts
+end_time: 1756036177323
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 6d246ba097004f29b25292f856de1e11
+run_name: mysterious-moose-171
+run_uuid: 6d246ba097004f29b25292f856de1e11
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1756036176954
+status: 3
+tags: []
+user_id: gulsa

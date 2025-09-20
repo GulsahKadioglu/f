@@ -20,7 +20,7 @@ Key Components:
 from sqlalchemy import Column, DateTime, Float, Integer
 from sqlalchemy.sql import func
 
-from ..db.base_class import Base
+from backend.db.base_class import Base
 
 
 class FLRoundMetric(Base):
@@ -47,8 +47,9 @@ class FLRoundMetric(Base):
                               server time upon insertion.
 
     """
-
     __tablename__ = "fl_round_metrics"
+    __table_args__ = {'extend_existing': True}
+
     id = Column(Integer, primary_key=True, index=True)
     round_number = Column(Integer, index=True, nullable=False)
     avg_accuracy = Column(Float, nullable=True)
@@ -56,3 +57,4 @@ class FLRoundMetric(Base):
     num_clients = Column(Integer, nullable=False)
     avg_uncertainty = Column(Float, nullable=True)
     timestamp = Column(DateTime, server_default=func.now())
+

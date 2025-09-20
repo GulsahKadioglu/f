@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/gulsa/YZTA074/federated-cancer-screening/fl-node/mlruns/0/c1038b2478fe477880f8988da6501ba5/artifacts
+end_time: 1756036300321
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: c1038b2478fe477880f8988da6501ba5
+run_name: FL_Client_Round_unknown
+run_uuid: c1038b2478fe477880f8988da6501ba5
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1756036299618
+status: 3
+tags: []
+user_id: gulsa

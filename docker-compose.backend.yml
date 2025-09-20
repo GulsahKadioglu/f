@@ -1,8 +1,6 @@
 # This is a Docker Compose file for the backend services of the application.
 # It defines the services, networks, and volumes required to run the backend.
 
-version: "3.8"
-
 services:
   # This service runs the PostgreSQL database.
   db:
@@ -29,9 +27,9 @@ services:
   # This service runs the backend API.
   backend:
     build:
-      context: ./backend
-      dockerfile: Dockerfile
-    container_name: backend_api
+      context: .
+      dockerfile: backend/Dockerfile
+    container_name: backend
     depends_on:
       # This service depends on the db and redis services.
       - db
@@ -45,15 +43,9 @@ services:
     volumes:
       # This volume mounts the secure storage directory.
       - ./secure_storage:/app/secure_storage
-      # This volume mounts the backend code for live changes.
-      - ./backend:/app
-    deploy:
-      resources:
-        limits:
-          # This limits the CPU and memory resources for the backend service.
-          cpus: "0.5"
-          memory: 768M
+      - .:/app
 
+    
 volumes:
   # This defines the named volume for the PostgreSQL data.
   postgres_data:

@@ -25,7 +25,7 @@ from logging.config import fileConfig
 
 # Import the Base metadata object from the application's database models.
 # This is crucial as it tells Alembic what the target schema should look like.
-from db.base_class import Base
+from backend.db.base_class import Base
 from sqlalchemy import engine_from_config, pool
 
 from alembic import context
@@ -81,7 +81,7 @@ def run_migrations_online():
 
     In this mode, Alembic connects to the target database using an SQLAlchemy
     Engine and applies the migrations directly. This is the most common mode
-of
+    of
     operation during development and for automated deployments. The database
     connection details are retrieved from the environment or the `alembic.ini`
     file.

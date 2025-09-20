@@ -23,15 +23,15 @@ from typing import TypeVar
 from sqlalchemy import func
 from sqlalchemy.orm import Session
 
-from ..models.report import AnalysisReport
-from ..schemas.report import (
+from backend.models.report import AnalysisReport
+from backend.schemas.report import (
     ReportCreate,
     ReportStatistics,
     ReportStatus,
     ReportUpdate,
 )
 
-from ..models import report as models
+from backend.models import report as models
 
 ModelType = TypeVar("ModelType", bound=AnalysisReport)
 

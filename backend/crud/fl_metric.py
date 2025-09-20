@@ -18,8 +18,8 @@ Key Components:
 
 from sqlalchemy.orm import Session
 
-from ..models.fl_metrics import FLRoundMetric
-from ..schemas.fl_metric import FLRoundMetricBase, FLRoundMetricUpdate
+from backend.models.fl_metrics import FLRoundMetric
+from backend.schemas.fl_metric import FLRoundMetricBase, FLRoundMetricUpdate
 
 
 def create(db: Session, obj_in: FLRoundMetricBase) -> FLRoundMetric:

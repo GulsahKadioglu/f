@@ -15,7 +15,7 @@ Purpose:
 
 Key Components:
 - `pwd_context`: A Passlib context for hashing and verifying passwords using bcrypt.
-- `oauth2_scheme`: A FastAPI security scheme for handling OAuth2 password flow.
+- `oauth2_scheme`: a FastAPI security scheme for handling OAuth2 password flow.
 - `verify_password`, `get_password_hash`: Functions for password management.
 - `create_access_token`: Function to generate a JWT access token.
 - `get_current_user`, `get_current_active_user`, `get_current_admin_user`:
@@ -27,10 +27,10 @@ Key Components:
 from datetime import datetime, timedelta
 
 from .config import settings
-from ..crud import user as user_crud
-from ..db.session import get_db
-from ..models.user import Permission, User, UserRole
-from ..schemas.token import TokenData
+from backend.crud import user as user_crud
+from backend.db.session import get_db
+from backend.models.user import Permission, User, UserRole
+from backend.schemas.token import TokenData
 from fastapi import Depends, HTTPException, status
 from fastapi.security import OAuth2PasswordBearer
 from jose import JWTError, jwt

@@ -109,7 +109,7 @@ def generate_heatmap_task(report_id: str):
 @celery_app.task
 def start_fl_round_task():
     """Asynchronously triggers the start of a federated learning round on the FL server."""
-    from .core.config import settings
+    from backend.core.config import settings
 
     logging.basicConfig(
         level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s"

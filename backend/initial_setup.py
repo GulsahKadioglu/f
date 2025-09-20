@@ -16,10 +16,10 @@ Usage:
 
 from sqlalchemy.orm import Session
 
-from .crud.user import create_user
-from .db.session import SessionLocal
-from .models.user import User
-from .schemas.user import UserCreate
+from backend.crud.user import create_user
+from backend.db.session import SessionLocal
+from backend.models.user import User
+from backend.schemas.user import UserCreate
 
 
 def create_initial_admin(db: Session):

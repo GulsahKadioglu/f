@@ -23,11 +23,11 @@ Key Components:
 
 from typing import List
 
-from .. import crud, schemas
-from ..core.exceptions import ResourceNotFoundException
-from ..core.security import has_permission
-from ..db.session import get_db
-from ..models.user import Permission, User
+from backend import crud, schemas
+from backend.core.exceptions import ResourceNotFoundException
+from backend.core.security import has_permission
+from backend.db.session import get_db
+from backend.models.user import Permission, User
 from fastapi import APIRouter, Depends
 from sqlalchemy.orm import Session
 

@@ -30,30 +30,30 @@ from sqlalchemy.orm import Session
 from starlette.middleware.cors import CORSMiddleware
 from starlette.middleware.httpsredirect import HTTPSRedirectMiddleware
 
-from . import crud
-from . import schemas
-from .api import auth, fl, medical_cases, mlflow, model_versions, reports
-from .api.routers import dashboard
-from .core.config import settings
-from .core.exceptions import (
+import backend.crud as crud
+import backend.schemas as schemas
+from backend.api import auth, fl, medical_cases, mlflow, model_versions, reports
+from backend.api.routers import dashboard
+from backend.core.config import settings
+from backend.core.exceptions import (
     BadRequestException,
     DuplicateEntryException,
     ResourceNotFoundException,
 )
-from .core.security import (
+from backend.core.security import (
     get_current_admin_user,
     get_current_user,
     has_permission,
 )
-from .db.session import get_db
-from .models.user import Permission
+from backend.db.session import get_db
+from backend.models.user import Permission
 
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     # Startup
     if not settings.TESTING:
-        redis = Redis(host='localhost', port=6379, encoding="utf8", decode_responses=True)
+        redis = Redis(host='redis', port=6379, encoding="utf8", decode_responses=True)
         await FastAPILimiter.init(redis)
     yield
     # Shutdown
@@ -63,7 +63,13 @@ async def lifespan(app: FastAPI):
 
 from fastapi.staticfiles import StaticFiles
 
-app = FastAPI(title="Federated Cancer Screening - Central Server", lifespan=lifespan)
+app = FastAPI(
+    title="Federated Cancer Screening - Central Server",
+    lifespan=lifespan,
+    docs_url="/docs",
+    redoc_url="/redoc",
+    openapi_url="/openapi.json",
+)
 
 # Mount static files directory
 app.mount(
@@ -94,7 +100,7 @@ async def add_security_headers(request: Request, call_next):
     response.headers["X-Content-Type-Options"] = "nosniff"
     response.headers["X-Frame-Options"] = "DENY"
     response.headers["Content-Security-Policy"] = (
-        "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:;"
+        "default-src 'self'; script-src 'self' https://cdn.jsdelivr.net 'unsafe-inline'; style-src 'self' https://cdn.jsdelivr.net 'unsafe-inline'; img-src 'self' https://fastapi.tiangolo.com data:;"
     )
     return response
 

@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">50% </span>
+                <span class="strong">0% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>13/26</span>
+                <span class='fraction'>0/19</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">60% </span>
+                <span class="strong">0% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>3/5</span>
+                <span class='fraction'>0/5</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">25% </span>
+                <span class="strong">0% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>1/4</span>
+                <span class='fraction'>0/4</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">50% </span>
+                <span class="strong">0% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>13/26</span>
+                <span class='fraction'>0/19</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line medium'></div>
+    <div class='status-line low'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -169,22 +169,22 @@
 <a name='L104'></a><a href='#L104'>104</a>
 <a name='L105'></a><a href='#L105'>105</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -281,14 +281,14 @@ import Link from 'next/link';
 import { AxiosResponse, AxiosInstance } from 'axios';
 import { TextField, Button } from '@mui/material';
 &nbsp;
-export default function LoginPage() {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState&lt;string | null&gt;(null);
-  const router = useRouter();
+export default function <span class="fstat-no" title="function not covered" >LoginPage() {</span>
+  const [email, setEmail] = <span class="cstat-no" title="statement not covered" >useState('');</span>
+  const [password, setPassword] = <span class="cstat-no" title="statement not covered" >useState('');</span>
+  const [loading, setLoading] = <span class="cstat-no" title="statement not covered" >useState(false);</span>
+  const [error, setError] = <span class="cstat-no" title="statement not covered" >useState&lt;string | null&gt;(null);</span>
+  const router = <span class="cstat-no" title="statement not covered" >useRouter();</span>
 &nbsp;
-  const handleLogin = <span class="fstat-no" title="function not covered" >async (e</span>: React.FormEvent) =&gt; {
+  const handleLogin = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >async (e</span>: React.FormEvent) =&gt; {</span>
 <span class="cstat-no" title="statement not covered" >    e.preventDefault();</span>
 <span class="cstat-no" title="statement not covered" >    setLoading(true);</span>
 <span class="cstat-no" title="statement not covered" >    setError(null);</span>
@@ -316,7 +316,7 @@ export default function LoginPage() {
           &lt;h1 className="text-3xl font-bold text-center mb-6"&gt;Login&lt;/h1&gt;
           &lt;div className="relative"&gt;
             {loading ? (
-<span class="branch-0 cbranch-no" title="branch not covered" >              &lt;motion.div</span>
+              &lt;motion.div
                 key="loading-indicator"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
@@ -352,7 +352,7 @@ export default function LoginPage() {
                   Forgot your password?
                 &lt;/Link&gt;
               &lt;/div&gt;
-              {error &amp;&amp; &lt;p className="text-red-500 text-sm text-center"&gt;{error}&lt;/p&gt;}
+              {<span class="branch-0 cbranch-no" title="branch not covered" >error &amp;&amp; &lt;</span>p className="text-red-500 text-sm text-center"&gt;{error}&lt;/p&gt;}
               &lt;Button
                 type="submit"
                 fullWidth
@@ -360,7 +360,7 @@ export default function LoginPage() {
                 color="primary"
                 disabled={loading}
               &gt;
-                {loading ? <span class="branch-0 cbranch-no" title="branch not covered" >'Logging in...' : '</span>Login'}
+                {loading ? 'Logging in...' : 'Login'}
               &lt;/Button&gt;
             &lt;/form&gt;
           &lt;/div&gt;
@@ -382,7 +382,7 @@ export default function LoginPage() {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-09-12T21:30:14.770Z
+                at 2025-09-20T00:02:16.512Z
             </div>
         <script src="../prettify.js"></script>
         <script>

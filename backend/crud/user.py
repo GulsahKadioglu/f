@@ -24,9 +24,9 @@ from typing import Any, Dict, Optional, Union
 
 from sqlalchemy.orm import Session
 
-from ..core.hashing import get_password_hash
-from ..models import user as models
-from ..schemas import user as schemas
+from backend.core.hashing import get_password_hash
+from backend.models import user as models
+from backend.schemas import user as schemas
 
 
 def get_user_by_email(db: Session, email: str) -> Optional[models.User]:

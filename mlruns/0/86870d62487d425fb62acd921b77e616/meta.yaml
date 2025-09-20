@@ -1,0 +1,14 @@
+artifact_uri: file:///C:/Users/gulsa/YZTA074/federated-cancer-screening/mlruns/0/86870d62487d425fb62acd921b77e616/artifacts
+end_time: 1754614127381
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 86870d62487d425fb62acd921b77e616
+run_name: mysterious-fly-272
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1754614126395
+status: 3
+tags: []
+user_id: gulsa

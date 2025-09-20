@@ -1,0 +1,14 @@
+artifact_uri: file:///C:/Users/gulsa/YZTA074/federated-cancer-screening/fl-node/mlruns/0/a81b92163ba740bcbe78c6dfbc246851/artifacts
+end_time: 1754913634285
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: a81b92163ba740bcbe78c6dfbc246851
+run_name: funny-squirrel-176
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1754913633199
+status: 3
+tags: []
+user_id: gulsa

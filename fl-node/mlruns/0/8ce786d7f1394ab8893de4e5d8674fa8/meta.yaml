@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/gulsa/YZTA074/federated-cancer-screening/fl-node/mlruns/0/8ce786d7f1394ab8893de4e5d8674fa8/artifacts
+end_time: 1756036301659
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 8ce786d7f1394ab8893de4e5d8674fa8
+run_name: charming-pig-476
+run_uuid: 8ce786d7f1394ab8893de4e5d8674fa8
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1756036301383
+status: 3
+tags: []
+user_id: gulsa

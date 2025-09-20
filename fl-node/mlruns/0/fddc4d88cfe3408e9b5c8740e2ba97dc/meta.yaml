@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/gulsa/YZTA074/federated-cancer-screening/fl-node/mlruns/0/fddc4d88cfe3408e9b5c8740e2ba97dc/artifacts
+end_time: 1756898907231
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: fddc4d88cfe3408e9b5c8740e2ba97dc
+run_name: shivering-wasp-622
+run_uuid: fddc4d88cfe3408e9b5c8740e2ba97dc
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1756898906276
+status: 3
+tags: []
+user_id: gulsa

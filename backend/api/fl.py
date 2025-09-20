@@ -23,13 +23,13 @@ Key Components:
 
 from typing import List
 
-from .. import encryption_service, schemas
-from ..core.security import (
+from backend import encryption_service, schemas
+from backend.core.security import (
     get_current_admin_user,
     get_current_user,
 )
-from ..crud import fl_metric as crud_fl_metric
-from ..db.session import get_db
+from backend.crud import fl_metric as crud_fl_metric
+from backend.db.session import get_db
 from fastapi import APIRouter, Depends, HTTPException, Response, status
 from sqlalchemy.orm import Session
 

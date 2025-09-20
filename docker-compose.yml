@@ -19,7 +19,7 @@ services:
       - "5432:5432"
     healthcheck:
       # This command checks if the database is ready to accept connections.
-      test: ["CMD-SHELL", "pg_isready -U user -d postgres || exit 1"]
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER} -d ${POSTGRES_DB} || exit 1"]
       interval: 10s
       timeout: 5s
       retries: 10
@@ -33,6 +33,26 @@ services:
       # This maps the host port 6379 to the container port 6379.
       - "6379:6379"
 
+  # This service runs the backend API.
+  backend:
+    build:
+      context: .
+      dockerfile: backend/Dockerfile
+    container_name: backend
+    depends_on:
+      # This service depends on the db and redis services.
+      - db
+      - redis
+    ports:
+      # This maps the host port 8000 to the container port 8000.
+      - "8000:8000"
+    env_file:
+      # This file contains the environment variables for the backend.
+      - ./backend/.env
+    volumes:
+      # This volume mounts the secure storage directory.
+      - ./secure_storage:/app/secure_storage
+
   # This service initializes the database.
   db-init:
     image: postgres:16
@@ -45,7 +65,7 @@ services:
     command: >
       bash -c 
       "PGPASSWORD=${POSTGRES_PASSWORD} psql -h db -U ${POSTGRES_USER} -d postgres -c 'CREATE DATABASE ${POSTGRES_DB};' || true &&
-      PGPASSWORD=${POSTGRES_PASSWORD} psql -h db -U ${POSTGRES_USER} -d ${POSTGRES_DB} -c 'INSERT INTO users (email, hashed_password, is_active, is_superuser) VALUES (''test@example.com'', crypt(''testpassword'', gen_salt(''bf'')), true, true) ON CONFLICT (email) DO NOTHING;"
+      PGPASSWORD=${POSTGRES_PASSWORD} psql -h db -U ${POSTGRES_USER} -d ${POSTGRES_DB} -c 'INSERT INTO users (email, hashed_password, is_active, is_superuser) VALUES (''test@example.com''', crypt(''testpassword''', gen_salt(''bf'')), true, true) ON CONFLICT (email) DO NOTHING;"
     restart: "no"
 
   # This service runs the Celery worker.
@@ -105,40 +125,40 @@ services:
   #         memory: 1.5G
 
   # This service runs the frontend UI.
-  # frontend:
-  #   build:
-  #     context: ./frontend
-  #     dockerfile: Dockerfile
-  #   container_name: frontend_ui
-  #   depends_on:
-  #     - backend
-  #   environment:
-  #     - NEXT_PUBLIC_API_URL=http://localhost:8000
-  #   ports:
-  #     - "3000:3000"
-  #   deploy:
-  #     resources:
-  #       limits:
-  #         cpus: "0.5"
-  #         memory: 1G
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: frontend_ui
+    depends_on:
+      - backend
+    environment:
+      - NEXT_PUBLIC_API_URL=http://localhost:8000
+    ports:
+      - "3000:3000"
+    deploy:
+      resources:
+        limits:
+          cpus: "0.5"
+          memory: 1G
 
   # This service runs the Nginx proxy.
-  # nginx:
-  #   image: nginx:latest
-  #   container_name: nginx_proxy
-  #   ports:
-  #     - "80:80"
-  #     - "443:443"
-  #   volumes:
-  #     - ./nginx.conf:/etc/nginx/nginx.conf:ro
-  #   depends_on:
-  #     - frontend
-  #     - backend
-  #   deploy:
-  #     resources:
-  #       limits:
-  #         cpus: "0.2"
-  #         memory: 128M
+  nginx:
+    image: nginx:latest
+    container_name: nginx_proxy
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+    depends_on:
+      - frontend
+      - backend
+    deploy:
+      resources:
+        limits:
+          cpus: "0.2"
+          memory: 128M
 
   # This service runs the Prometheus server.
   prometheus:

@@ -26,7 +26,7 @@ from typing import Optional
 
 from pydantic import BaseModel, ConfigDict, EmailStr, Field
 
-from ..models.user import UserRole
+from backend.models.user import UserRole
 
 
 class UserBase(BaseModel):

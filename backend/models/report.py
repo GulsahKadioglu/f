@@ -35,7 +35,7 @@ from sqlalchemy import (  # Added Integer
 from sqlalchemy.dialects.postgresql import UUID
 from sqlalchemy.sql import func
 
-from ..db.base_class import Base
+from backend.db.base_class import Base
 
 
 class ReportStatus(str, enum.Enum):
@@ -83,6 +83,8 @@ class AnalysisReport(Base):
     """
 
     __tablename__ = "analysis_reports"
+    __table_args__ = {'extend_existing': True}
+
     id = Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
     created_at = Column(DateTime, server_default=func.now())
     model_version = Column(String, nullable=False)

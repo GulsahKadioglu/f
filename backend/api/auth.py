@@ -23,20 +23,20 @@ Key Components:
 
 from uuid import UUID
 
-from .. import crud, schemas
-from ..core.exceptions import (
+from backend import crud, schemas
+from backend.core.exceptions import (
     DuplicateEntryException,
     ResourceNotFoundException,
 )
-from ..core.hashing import verify_password
-from ..core.security import (
+from backend.core.hashing import verify_password
+from backend.core.security import (
     create_access_token,
     get_current_admin_user,
     get_current_user,
 )
-from ..db.session import get_db
-from ..schemas.token import Token
-from ..schemas.user import User, UserCreate, UserPushToken, UserUpdate
+from backend.db.session import get_db
+from backend.schemas.token import Token
+from backend.schemas.user import User, UserCreate, UserPushToken, UserUpdate
 from fastapi import APIRouter, Depends, HTTPException, status
 from fastapi.security import OAuth2PasswordRequestForm
 from sqlalchemy.orm import Session

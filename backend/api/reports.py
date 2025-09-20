@@ -23,15 +23,15 @@ Key Components:
 
 from typing import List
 
-from .. import crud, schemas
-from ..core.security import (
+from backend import crud, schemas
+from backend.core.security import (
     get_current_admin_user,
     get_current_user,
     get_current_active_user,
 )
-from ..db.session import get_db
-from ..models.fl_metrics import FLRoundMetric
-from ..models.user import Permission, User
+from backend.db.session import get_db
+from backend.models.fl_metrics import FLRoundMetric
+from backend.models.user import Permission, User
 from fastapi import APIRouter, Depends, HTTPException, status
 from sqlalchemy.orm import Session
 
@@ -153,7 +153,7 @@ def start_fl_round():
         dict: A confirmation message indicating that the request to initiate an FL round has been received.
 
     """
-    from ..worker import start_fl_round_task
+    from worker import start_fl_round_task
 
     task = start_fl_round_task.delay()
     return {
@@ -184,7 +184,7 @@ def trigger_heatmap_generation(
               and the unique ID of the Celery task, which can be used to track its status.
 
     """
-    from ..worker import generate_heatmap_task
+    from worker import generate_heatmap_task
 
     task = generate_heatmap_task.delay(report_id)
     return {"message": "Heatmap generation started.", "task_id": task.id}

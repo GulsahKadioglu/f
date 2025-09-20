@@ -22,12 +22,15 @@
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  // Add this to prevent test files from being treated as pages
+  pageExtensions: ['ts', 'tsx', 'js', 'jsx', 'md', 'mdx'],
   // `outputFileTracingRoot` specifies the root directory for file tracing.
   // This is important for optimizing the build output and ensuring all necessary files are included.
   outputFileTracingRoot: 'C:\\Users\\gulsa\\federated-cancer-screening',
   // `transpilePackages` is an array of packages that should be transpiled by Next.js.
   // This is often used for monorepos or when using packages that are not pre-transpiled for Next.js.
   transpilePackages: [
+
     '@ohif/core',
     '@ohif/extension-cornerstone',
     '@ohif/extension-cornerstone-dicom-rt',

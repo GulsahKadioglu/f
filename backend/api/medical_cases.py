@@ -26,18 +26,18 @@ import uuid
 from pathlib import Path
 from typing import List, Optional  # Added Optional and List
 
-from .. import crud, schemas
-from ..core.config import settings
-from ..core.exceptions import (
+from backend import crud, schemas
+from backend.core.config import settings
+from backend.core.exceptions import (
     BadRequestException,
     PermissionDeniedException,
     ResourceNotFoundException,
 )
-from ..core.security import has_permission
-from ..db.session import get_db
-from ..models.medical_case import MedicalCase
-from ..models.user import Permission, User, UserRole
-from ..schemas.medical_image import MedicalImageResponse
+from backend.core.security import has_permission
+from backend.db.session import get_db
+from backend.models.medical_case import MedicalCase
+from backend.models.user import Permission, User, UserRole
+from backend.schemas.medical_image import MedicalImageResponse
 from fastapi import APIRouter, Depends, File, Form, Query, UploadFile  # Added Query
 from sqlalchemy.orm import Session
 
@@ -159,7 +159,7 @@ import pydicom
 # ... (rest of the imports)
 
 
-from ..encryption_service import encrypt_file_content, decrypt_file_content
+from backend.encryption_service import encrypt_file_content, decrypt_file_content
 from starlette.responses import StreamingResponse
 from starlette.background import BackgroundTask
 import mimetypes

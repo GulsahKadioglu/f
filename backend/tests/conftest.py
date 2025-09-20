@@ -34,6 +34,12 @@ from dotenv import load_dotenv
 from fastapi.testclient import TestClient
 from sqlalchemy import create_engine
 from sqlalchemy.orm import Session, sessionmaker
+from io import BytesIO
+import pydicom
+from pydicom.dataset import FileDataset, FileMetaDataset
+from pathlib import Path
+import shutil
+from datetime import timedelta
 
 # --- Initial Setup -------------------------------------------------------------
 load_dotenv(dotenv_path="backend/.env.test")
@@ -53,6 +59,9 @@ from backend.main import app
 from backend.models.user import User
 from backend.schemas.user import UserCreate
 from backend.worker import celery_app
+from backend.models.medical_case import MedicalCase
+from backend.core.config import settings
+
 
 # --- Global Test Setup ---------------------------------------------------------
 
@@ -196,6 +205,12 @@ def test_admin_token(test_admin_user: User) -> str:
     return create_access_token(data={"sub": test_admin_user.email})
 
 
+@pytest.fixture(scope="function")
+def doctor_user_token(test_user: User) -> str:
+    """Fixture to create a JWT access token for the standard test user (doctor)."""
+    return create_access_token(data={"sub": test_user.email})
+
+
 def get_token(client: TestClient, email: str, password: str) -> str:
     """Helper function to obtain a JWT token from the login endpoint.
 
@@ -209,3 +224,55 @@ def get_token(client: TestClient, email: str, password: str) -> str:
     )
     response.raise_for_status()
     return response.json()["access_token"]
+
+@pytest.fixture(scope="function")
+def medical_case(db_session, test_user):
+    """Fixture to create a medical case in the test database."""
+    case = MedicalCase(
+        case_id=uuid.uuid4(),
+        patient_id="PATIENT123",
+        doctor_id=test_user.id
+    )
+    db_session.add(case)
+    db_session.commit()
+    db_session.refresh(case)
+    return case
+
+@pytest.fixture(scope="function")
+def dummy_dicom_file():
+    """Fixture to create a dummy DICOM file in memory."""
+    file_meta = FileMetaDataset()
+    file_meta.MediaStorageSOPClassUID = pydicom.uid.ExplicitVRLittleEndian
+    file_meta.MediaStorageSOPInstanceUID = "1.2.3.4.5.6.7.8.9.10.11.12"
+    file_meta.TransferSyntaxUID = pydicom.uid.ImplicitVRLittleEndian
+    ds = FileDataset("dummy.dcm", {}, file_meta=file_meta, preamble=b"\0" * 128)
+    ds.PatientName = "Test^Patient"
+    ds.StudyInstanceUID = "1.2.3.4.5.6.7.8.9.10"
+    ds.SeriesInstanceUID = "1.2.3.4.5.6.7.8.9.10.11"
+    ds.SOPInstanceUID = "1.2.3.4.5.6.7.8.9.10.11.12"
+    ds.Modality = "CT"
+    ds.InstanceNumber = 1
+    ds.is_implicit_VR = True
+    ds.is_little_endian = True
+
+    buffer = BytesIO()
+    pydicom.dcmwrite(buffer, ds)
+    buffer.seek(0)
+    return buffer
+
+@pytest.fixture(autouse=True)
+def cleanup_secure_storage():
+    """Fixture to clean up the secure storage directory before and after tests."""
+    SECURE_STORAGE_PATH = Path(settings.MEDICAL_IMAGES_STORAGE_PATH)
+    SECURE_STORAGE_PATH.mkdir(parents=True, exist_ok=True)
+    for item in SECURE_STORAGE_PATH.iterdir():
+        if item.is_file():
+            os.remove(item)
+        elif item.is_dir():
+            shutil.rmtree(item)
+    yield
+    for item in SECURE_STORAGE_PATH.iterdir():
+        if item.is_file():
+            os.remove(item)
+        elif item.is_dir():
+            shutil.rmtree(item)

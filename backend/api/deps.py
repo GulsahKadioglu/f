@@ -20,9 +20,9 @@ Key Components:
 
 from typing import Generator
 
-from ..core.security import get_current_active_user, get_current_user
-from ..db.session import SessionLocal
-from ..models.user import User
+from backend.core.security import get_current_active_user, get_current_user
+from backend.db.session import SessionLocal
+from backend.models.user import User
 from fastapi import Depends
 
 

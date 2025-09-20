@@ -1,38 +1,71 @@
 # This file specifies intentionally untracked files that Docker should ignore when building images.
 # It helps to keep the Docker image size small and avoid including unnecessary or sensitive files.
 
+# Ignore version control system directories and macOS-specific files.
+**/.git
+**/.DS_Store
+
+# Ignore project-specific directories that are not needed in the backend image
+/frontend/
+/ohif-viewer/
+/mobile-app/
+/fl-node/
+/mlruns/
+/test-results/
+/db_custom/
+/secure_storage/
+/node_modules/
+
 # Ignore Python-specific build artifacts and cache directories.
 **/__pycache__/
 **/*.pyc
 **/*.pyo
 **/*.pyd
+**/.pytest_cache/
+**/.ruff_cache/
+**/.mypy_cache/
+
+# Ignore Node.js/Frontend cache and build directories
+**/.next/
+**/.swc/
+
+# Ignore virtual environment directories
+/venv/
+/.venv/
+env/
+/backend/venv/
+/backend/.venv/
+/backend/env/
+/backend/__pycache__/
 
 # Ignore common log files and environment configuration files.
 **/*.log
 **/.env
 
-# Ignore version control system directories and macOS-specific files.
-**/.git
-**/.DS_Store
-
 # Ignore directories and files commonly used for data, logs, and machine learning artifacts.
 **/data/
+**/datasets/
 **/logs/
+**/tmp/
 **/artifacts/
 **/checkpoints/
 **/*.pt
 **/*.pth
 **/*.h5
+**/*.onnx
+**/*.joblib
+**/*.npy
+**/*.npz
+**/*.parquet
 
 # Ignore common archive file formats.
 **/*.zip
 **/*.tar
 **/*.tar.gz
 
-# Ignore Node.js dependency directory.
-node_modules
-
-# Ignore common database files.
+# Ignore common database and data files.
 *.csv
+*.tsv
 *.db
 *.sqlite
+*.sqlite3

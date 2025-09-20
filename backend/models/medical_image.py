@@ -23,7 +23,7 @@ from sqlalchemy import Column, DateTime, ForeignKey, Integer, String
 from sqlalchemy.orm import relationship
 from sqlalchemy.sql import func
 
-from ..db.base_class import Base
+from backend.db.base_class import Base
 
 
 class MedicalImage(Base):
@@ -66,6 +66,7 @@ class MedicalImage(Base):
     case_id = Column(Integer, ForeignKey("medical_cases.id"))
     uploaded_at = Column(DateTime(timezone=True), server_default=func.now())
 
-    medical_case = relationship("MedicalCase", back_populates="medical_images")
+    medical_case = relationship("models.medical_case.MedicalCase", back_populates="medical_images")
 
-    __table_args__ = ()
+    __table_args__ = {'extend_existing': True}
+

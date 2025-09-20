@@ -56,7 +56,7 @@ def test_create_fl_metric(
     assert response.json()["avg_accuracy"] == 0.85
 
     # Verify permission denied for non-admin
-    from ..crud.user import create_user
+    from backend.crud.user import create_user
     from backend.schemas.user import UserCreate
 
     user_in = UserCreate(

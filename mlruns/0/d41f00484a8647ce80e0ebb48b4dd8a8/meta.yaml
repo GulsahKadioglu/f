@@ -1,0 +1,14 @@
+artifact_uri: file:///C:/Users/gulsa/YZTA074/federated-cancer-screening/mlruns/0/d41f00484a8647ce80e0ebb48b4dd8a8/artifacts
+end_time: 1754613529611
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: d41f00484a8647ce80e0ebb48b4dd8a8
+run_name: dapper-stag-530
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1754613528339
+status: 3
+tags: []
+user_id: gulsa

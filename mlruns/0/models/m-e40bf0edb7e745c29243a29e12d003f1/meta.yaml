@@ -1,0 +1,10 @@
+artifact_location: file:///C:/Users/gulsa/YZTA074/federated-cancer-screening/mlruns/0/models/m-e40bf0edb7e745c29243a29e12d003f1/artifacts
+creation_timestamp: 1754614224974
+experiment_id: '0'
+last_updated_timestamp: 1754614225036
+model_id: m-e40bf0edb7e745c29243a29e12d003f1
+model_type: null
+name: model
+source_run_id: 30ecaa829d6b4c13a22bd0e1eead152f
+status: 3
+status_message: null

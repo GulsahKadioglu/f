@@ -22,9 +22,9 @@ from .base_class import Base  # noqa
 
 # Import all the models. Similar to the Base import, these are imported for their
 # side effect of registering themselves with the `Base.metadata`.
-from ..models.user import User  # noqa
-from ..models.medical_case import MedicalCase  # noqa
-from ..models.medical_image import MedicalImage  # noqa
-from ..models.report import AnalysisReport  # noqa
-from ..models.model_version import ModelVersion  # noqa
-from ..models.fl_metrics import FLRoundMetric  # noqa
+from backend.models.user import User  # noqa
+from backend.models.medical_case import MedicalCase  # noqa
+from backend.models.medical_image import MedicalImage  # noqa
+from backend.models.report import AnalysisReport  # noqa
+from backend.models.model_version import ModelVersion  # noqa
+from backend.models.fl_metrics import FLRoundMetric  # noqa

@@ -1,0 +1,12 @@
+[1A[2K[2m[WebServer] [22m [33m[1m⚠[22m[39m Warning: Found multiple lockfiles. Selecting C:\Users\gulsa\YZTA074\federated-cancer-screening\package-lock.json.
+[2m[WebServer] [22m   Consider removing the lockfiles at:
+[2m[WebServer] [22m   * C:\Users\gulsa\YZTA074\federated-cancer-screening\frontend\package-lock.json
+[2m[WebServer] [22m
+
+Error: Timed out waiting 60000ms from config.webServer.
+
+[1A[2K
+To open last HTML report run:
+[36m[39m
+[36m  npx playwright show-report[39m
+[36m[39m

@@ -26,7 +26,7 @@ from sqlalchemy import Column, DateTime, Float, Integer, String
 from sqlalchemy.dialects.postgresql import UUID
 from sqlalchemy.sql import func
 
-from ..db.base_class import Base
+from backend.db.base_class import Base
 
 
 class ModelVersion(Base):
@@ -66,3 +66,5 @@ class ModelVersion(Base):
     avg_loss = Column(Float, nullable=True)
     description = Column(String, nullable=True)
     file_path = Column(String, nullable=False)
+
+    __table_args__ = {'extend_existing': True}

@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/gulsa/YZTA074/federated-cancer-screening/fl-node/mlruns/0/4d8b9d2139504391bc62d4cb937dc39e/artifacts
+end_time: 1756036501286
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 4d8b9d2139504391bc62d4cb937dc39e
+run_name: delightful-mole-523
+run_uuid: 4d8b9d2139504391bc62d4cb937dc39e
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1756036500947
+status: 3
+tags: []
+user_id: gulsa

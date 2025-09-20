@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, screen, waitFor } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import CasesList from './CasesList';
 import { apiClient } from '@/services/api';
 
@@ -26,11 +26,15 @@ describe('CasesList', () => {
     mockedApiClient.get.mockClear();
   });
 
-  it('shows a loading message initially', () => {
+  it('shows a loading message initially and then the table', async () => {
     mockedApiClient.get.mockResolvedValue({ data: [] });
     render(<CasesList />);
     // The "Loading..." message should be present on the initial render
     expect(screen.getByText(/Loading cases.../i)).toBeInTheDocument();
+
+    // The loading message should disappear and the table should be visible
+    expect(await screen.findByText(/No cases found./i)).toBeInTheDocument();
+    expect(screen.queryByText(/Loading cases.../i)).not.toBeInTheDocument();
   });
 
   it('shows an error message if data fetching fails', async () => {
@@ -38,10 +42,8 @@ describe('CasesList', () => {
     mockedApiClient.get.mockRejectedValue(new Error(errorMessage));
     render(<CasesList />);
 
-    // Use waitFor to handle state updates gracefully
-    await waitFor(() => {
-      expect(screen.getByText(/An error occurred while loading cases./i)).toBeInTheDocument();
-    });
+    // Use findByText to wait for the error message to appear
+    expect(await screen.findByText(/An error occurred while loading cases./i)).toBeInTheDocument();
   });
 
   it('displays a table of cases when data is fetched successfully', async () => {
@@ -53,11 +55,9 @@ describe('CasesList', () => {
 
     render(<CasesList />);
 
-    // Use waitFor to ensure all assertions related to the async update are checked together
-    await waitFor(() => {
-      expect(screen.getByText('P001')).toBeInTheDocument();
-      expect(screen.getByText('P002')).toBeInTheDocument();
-    });
+    // Use findByText to wait for the data to be displayed
+    expect(await screen.findByText('P001')).toBeInTheDocument();
+    expect(screen.getByText('P002')).toBeInTheDocument();
 
     // The loading message should disappear after the update
     expect(screen.queryByText(/Loading cases.../i)).not.toBeInTheDocument();

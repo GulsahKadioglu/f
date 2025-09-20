@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/gulsa/YZTA074/federated-cancer-screening/fl-node/mlruns/0/13060c603c9745ae8808524a6ff96bbd/artifacts
+end_time: 1756899347386
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 13060c603c9745ae8808524a6ff96bbd
+run_name: adventurous-ram-351
+run_uuid: 13060c603c9745ae8808524a6ff96bbd
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1756899347122
+status: 3
+tags: []
+user_id: gulsa

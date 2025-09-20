@@ -21,8 +21,8 @@ from typing import List, TypeVar
 
 from sqlalchemy.orm import Session
 
-from ..models.medical_image import MedicalImage
-from ..schemas.medical_image import MedicalImageCreate, MedicalImageUpdate
+from backend.models.medical_image import MedicalImage
+from backend.schemas.medical_image import MedicalImageCreate, MedicalImageUpdate
 
 ModelType = TypeVar("ModelType", bound=MedicalImage)
 

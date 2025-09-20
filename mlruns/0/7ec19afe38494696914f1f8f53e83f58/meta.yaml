@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/gulsa/YZTA074/federated-cancer-screening/mlruns/0/7ec19afe38494696914f1f8f53e83f58/artifacts
+end_time: 1755273038032
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 7ec19afe38494696914f1f8f53e83f58
+run_name: judicious-vole-890
+run_uuid: 7ec19afe38494696914f1f8f53e83f58
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1755273037621
+status: 3
+tags: []
+user_id: gulsa

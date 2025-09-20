@@ -19,8 +19,8 @@ Key Components:
 
 from sqlalchemy.orm import Session
 
-from .. import crud
-from ..schemas.dashboard import (
+from backend import crud
+from backend.schemas.dashboard import (
     CaseInfo,
     DashboardData,
     FLMetric,
